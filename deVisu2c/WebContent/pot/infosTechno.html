@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="js/jquery/jquery-ui.structure.min.css" />
+
+<style>
+body {
+	font-family: verdana, sans-serif;
+}
+
+#accordionContainer {
+	width: 350px;
+	height: 400px;
+}
+
+#accordion .ui-accordion-content {
+	width: 95%;
+	max-height: 140px;
+	/*background-color: #f3f3f3;*/
+	color: #777;
+	color: black;
+	font-size: 12px;
+	overflow: auto;
+	line-height: normal;
+	padding :2px;
+}
+
+#accordion .ui-accordion-header {
+	font-size: 10pt;
+	line-height: normal;
+	background-color: grey;
+	color: brown;
+	font-weight: normal;
+}
+
+#idSpan {
+	font-size: 8px;
+}
+
+#nameSpan {
+	font-size: 18px;
+	font-weight: bold;
+}
+</style>
+
+
+
+
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+
+<script src="js/infosAbstract.js" charset="UTF-8"></script>
+<script src="js/infosTechno.js" charset="UTF-8"></script>
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+	<span id="nameSpan">----</span>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="idSpan">000000</span>
+	<div id="accordionContainer">
+		<div id="accordion">
+
+			<h3>Description</h3>
+			<div>
+				<table border='0' align="center">
+					<tr valign="top">
+						<td><span id="imgSpan"></span></td>
+						<td><span id="descriptionSpan"></span></td>
+					</tr>
+
+				</table>
+
+
+			</div>
+			<h3>Attributes</h3>
+			<div>
+				<table border='0'>
+					<tr valign="top">
+						<td align="right">Category</td>
+						<td><b><span id="categorySpan"></span></b></td>
+					</tr>
+					<tr valign="top">
+						<td align="right">IT/Digital ratio</td>
+						<td><b><span id="digitalPolaritySpan"></span></b></td>
+					</tr>
+					<tr valign="top">
+						<td align="right">Technology maturity</td>
+						<td><b><span id="technologyMaturitySpan"></span></b></td>
+					</tr>
+					<tr valign="top">
+						<td align="right">Market Skills avalability</td>
+						<td><b><span id="marketSkillsSpan"></span></b></td>
+					</tr>
+					<tr valign="top">
+						<td align="right">TOTAL Skills avalability</td>
+						<td><b><span id="TotalSkillsSpan"></span></b></td>
+					</tr>
+
+				</table>
+
+
+			</div>
+			<h3>Digital capabilities</h3>
+			<div>
+
+				<span id="DCsSpan"></span>
+
+
+
+			</div>
+
+			<h3>Examples and resources</h3>
+			<div>
+
+				<b>Examples </b><span id="examplesSpan"></span> <b>Resources</b><span id="resourcesSpan"></span>
+
+			</div>
+
+			<h3>Avantages and limitations</h3>
+			<div>
+
+				<b> Avantages</b><span id="advantagesSpan"></span> <b> Limitiations</b> <span id="limitationsSpan"></span>
+
+			</div>
+
+			<h3>Linked technologies</h3>
+			<div>
+
+				<b>Strong links</b><br> <span id="stronglyLinkedTechsSpan"></span> <b> Weak links</b><br> <span id="weaklyLinkedTechsSpan"></span>
+			</div>
+
+
+
+
+
+		</div>
+		</div>
+</body>
+</html>

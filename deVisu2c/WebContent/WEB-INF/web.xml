@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.4">
+  <display-name>radarTool</display-name>
+  <context-param>
+    <param-name>dataManagerType</param-name>
+    <param-value>mongo</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbHost</param-name>
+    <param-value>localhost</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPort</param-name>
+    <param-value>27017</param-value>
+  </context-param>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>DeVisuServlet</display-name>
+    <servlet-name>DeVisuServlet</servlet-name>
+    <servlet-class>com.fauconnet.devisu.DeVisuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeVisuServlet</servlet-name>
+    <url-pattern>/pot/devisu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUploadServlet</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>com.fauconnet.devisu.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/pot/radarUpload</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+
+    <servlet>
+    <description></description>
+    <display-name>Neo4jServlet</display-name>
+    <servlet-name>Neo4jServlet</servlet-name>
+    <servlet-class>com.fauconnet.neo4j.Neo4jServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Neo4jServlet</servlet-name>
+    <url-pattern>/toutlesens/neoapi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RestServlet</display-name>
+    <servlet-name>RestServlet</servlet-name>
+    <servlet-class>com.fauconnet.rest.RestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestServlet</servlet-name>
+    <url-pattern>/toutlesens/restapi</url-pattern>
+  </servlet-mapping>
+</web-app>

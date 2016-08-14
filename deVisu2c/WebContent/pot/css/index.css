@@ -1,0 +1,50 @@
+
+#stateDisplay {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	text-align: center;
+}
+
+#loginDiv,#changePaswordDiv{
+	position: absolute;
+	top: 100px;
+	left: 500px;
+	background: #D6D6C2;
+	opacity: 0.95;
+	z-index: 30;
+	width: 300px;
+	height: 200px;
+	visibility: hidden;
+	font-size: 12px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	border-radius: 10px;
+}
+#changePaswordDiv{
+	height: 280px;
+	z-index=35;
+
+}
+#tabs{
+	  font-size: 14px;
+}
+tabs .ui-tabs-panel {
+	padding:2px
+}
+
+#chooseBuDiv{
+	position: absolute;
+	width :400px;
+	height: 200px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	text-align: center;
+	visibility: hidden;
+	background-color: #b18527;
+	
+}
+
+

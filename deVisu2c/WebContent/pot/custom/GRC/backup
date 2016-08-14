@@ -1,0 +1,210 @@
+.label.domaine {
+top:12px;
+   left:14px;
+   width:74px;
+   height:20px
+}
+
+#field_domaine {
+top:12px;
+   left:97px;
+   width:150px;
+   height:21px
+}
+
+.label.projet {
+top:13px;
+   left:259px;
+   width:63px;
+   height:20px
+}
+
+#field_projet {
+top:14px;
+   left:331px;
+   width:150px;
+   height:20px
+}
+
+.label.definition {
+top:52px;
+   left:116px;
+   width:79px;
+   height:19px
+}
+
+#field_definition {
+top:77px;
+   left:14px;
+   width:307px;
+   height:246px
+}
+
+.label.uses {
+top:334px;
+   left:130px;
+   width:47px;
+   height:21px
+}
+
+#field_uses {
+top:364px;
+   left:17px;
+   width:306px;
+   height:224px
+}
+
+.label.volet {
+top:12px;
+   left:500px;
+   width:46px;
+   height:21px
+}
+
+#field_volet {
+top:14px;
+   left:559px;
+   width:150px;
+   height:20px
+}
+
+.label.action {
+top:15px;
+   left:728px;
+   width:52px;
+   height:20px
+}
+
+#field_action {
+top:14px;
+   left:789px;
+   width:194px;
+   height:23px
+}
+
+.label.external ressources {
+top:50px;
+   left:419px;
+   width:183px;
+   height:24px
+}
+
+#field_external ressources {
+top:85px;
+   left:352px;
+   width:293px;
+   height:226px
+}
+
+.label.internal ressources {
+top:333px;
+   left:407px;
+   width:150px;
+   height:20px
+}
+
+#field_internal ressources {
+top:367px;
+   left:352px;
+   width:299px;
+   height:224px
+}
+
+.label.deliverable {
+top:53px;
+   left:666px;
+   width:88px;
+   height:20px
+}
+
+#field_deliverable {
+top:52px;
+   left:778px;
+   width:206px;
+   height:24px
+}
+
+.label.champion {
+top:89px;
+   left:669px;
+   width:84px;
+   height:20px
+}
+
+#field_champion {
+top:91px;
+   left:776px;
+   width:206px;
+   height:20px
+}
+
+.label.competitors {
+top:124px;
+   left:767px;
+   width:95px;
+   height:21px
+}
+
+#field_competitors {
+top:147px;
+   left:693px;
+   width:268px;
+   height:121px
+}
+
+.label.partners {
+top:277px;
+   left:787px;
+   width:74px;
+   height:21px
+}
+
+#field_partners {
+top:310px;
+   left:692px;
+   width:273px;
+   height:149px
+}
+
+.label.academia {
+top:467px;
+   left:794px;
+   width:81px;
+   height:20px
+}
+
+#field_academia {
+top:494px;
+   left:694px;
+   width:272px;
+   height:95px
+}
+
+<span class='label domaine'>domaine</span>
+<div class='field' id='field_domaine'>domaine</div>
+<span class='label projet'>projet</span>
+<div class='field' id='field_projet'>projet</div>
+<span class='label definition'>definition</span>
+<div class='field' id='field_definition'>definition</div>
+<span class='label uses'>uses</span>
+<div class='field' id='field_uses'>uses</div>
+<span class='label volet'>volet</span>
+<div class='field' id='field_volet'>volet</div>
+<span class='label action'>action</span>
+<div class='field' id='field_action'>action</div>
+<span class='label external ressources'>external ressources</span>
+<div class='field' id='field_external ressources'>external ressources</div>
+<span class='label internal ressources'>internal ressources</span>
+<div class='field' id='field_internal ressources'>internal ressources</div>
+<span class='label deliverable'>deliverable</span>
+<div class='field' id='field_deliverable'>deliverable</div>
+<span class='label champion'>champion</span>
+<div class='field' id='field_champion'>champion</div>
+<span class='label competitors'>competitors</span>
+<div class='field' id='field_competitors'>competitors</div>
+<span class='label partners'>partners</span>
+<div class='field' id='field_partners'>partners</div>
+<span class='label academia'>academia</span>
+<div class='field' id='field_academia'>academia</div>
+
+

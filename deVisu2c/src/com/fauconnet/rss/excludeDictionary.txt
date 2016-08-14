@@ -1,0 +1,57 @@
+
+#**************french current**********************************
+le,la,les,un,une, des,je,tu,il,elle,nous,vous,ils,moi,toi,lui,eux,a,est,sont
+,si,et,pour,à,dans,du,en,par,sur,être,que,au,qui,plus,pas,ce,avec
+,aux,au,cette,ce,ces, non, oui,donc,d'un,d'une,ceci,c'est,très,d'un,d'une
+,fait, entre, trois,très,après,avant,pendant,été,moins, contre, dont,ses,sous,son
+,tout,car,cela,comme,bien,mais,tout,rien,trop
+,veut,deux
+,notre, nos,votre, vos, leurs, leur,via
+
+ainsi,all,can,chaque,data,déjà,faire,
+ 
+and,applications,are,aux,avec,
+ 
+afin,also,aussi,base,but,cas,could,etc,exemple,from,has,idea,idée,information,l'idée,lors,mettre,mise,mon,même,new,other,part,permet,peut,place,possible,pourrait,sans,serait,soit,their,total,will,would,
+about,autres,avoir,avons,chez,each,j'ai,meilleure,permettant,plusieurs,should,simple,some,these,tous,very,when,également,
+créer,doit,faut,good,groupe,important,into,jour,make,need,niveau,nombre,nécessaire,oeuvre,only,permettre,peuvent,point,points,possibilité,qu'il,toutes,travail,type,use,used,vers,where,work,
+différents,proposer,null, permettrait, mieux, sein,
+000,better,during,fois,local,through,utiliser,
+
+ 
+
+
+#**************english current**********************************
+the,a,an,the,I,you,he,she,we,you,they,you,me,him,them,has,is,are,
+If,and for,at,of,by,for,on,be that in which,well,not this,with
+,this,this,this,no,yes,therefore,this is very
+,is,between,three,very,after,before,during,summer,less,including,his,in,
+while,for this,as well,but,nothing,too,much
+wants two
+,our,your,their,through,
+well,all,can,each,data,already,do,
+and,applications,are,to,with,
+so,also,also, basic,goal,case,could,etc.,for,example,from,down,below,idea,information,then,put,my,well,new,other,hand,allows,may,instead,can,could,not,would,be,their,total,will,would,
+
+about other,have,in,each,better,allowing several,simple,some,thesis,all very,When,too,
+create,must,must,good,group,important,into,date,make,need,level,number,necessary work,only,can,point,points,possibility,that all,work,type,use,used,worm,where,work,
+
+
+#**************espagnol current**********************************
+la, un, una, el, yo, tú, él, ella, nosotros, ustedes, ellos, tú, yo, él, ellos, uno, es decir, se
+Si, y para, en, de, por, para, en adelante, ser aquella en la que, bueno, no esto, con
+, La, la, esto, esto, esto, no, sí, por lo tanto, a, a, esto es, muy, a, a
+, ¿Es muy entre tres, después, antes, durante el verano, menos en contra, incluyendo el suyo, en su
+Mientras que, por ello, también, pero, todo, nada, demasiado
+Quiere dos
+, Nuestro, nuestro, tu, tu, su, su, a través de
+
+así, todos, cada uno puede, los datos, ya lo hacen
+ 
+y, las aplicaciones, son, para, con,
+ 
+así, también, también, el, caso, objetivo, básico, podría, etc, por ejemplo, de, abajo, información, idea, entonces, poner, poner, mi, bueno, nuevo, otro, lado, permite puede, en cambio, puede, no podría, sería,, Su, total, la voluntad, sería,
+sobre otros, tienen, tienen, en cada uno, tienen, mejor, lo que permite un número, "debería", sencillas, algunas tesis,, todos muy, cuando, también,
+crear, debe, debe, bueno, el grupo, importante, en, la fecha, la marca, necesita, el nivel, el número, el trabajo necesario, sólo, puede, puede, punto, puntos, la posibilidad, de que todos, el, tipo, de, trabajo, uso, usado, gusanos, trabajo,
+diferentes, proponer, nula, sería mejor, mama,
+000, mejor, en, tanto, nivel, local, través, de, uso,

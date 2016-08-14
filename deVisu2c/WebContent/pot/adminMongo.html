@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" media="screen" href="js/others/jquery.handsontable.full.min.css">
+<link rel="stylesheet" media="screen" href="js/jquery/jquery-ui.min.css">
+<script src="js/jquery/jquery.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js"></script>
+<script src="js/spreadsheet.js"></script>
+<script src="js/adminMongo.js"></script>
+<script src="js/others/jquery.handsontable.full.min.js"></script>
+<script type="text/javascript" src="js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+
+<style>
+#resultSheet {
+	width: 100%;
+	height: 600px;
+	overflow: auto;
+}
+
+#resultTextArea {
+	width: 100%;
+	height: 600px;
+	overflow: auto;
+	font-family: arial;
+	font-size: 12;
+	font-weight: normal;
+	color: black;
+}
+
+#csvDiv, #spreadsheetDiv {
+	width: 100%;
+	height: 600px;
+	overflow: auto;
+    font-size: 12px;
+}
+
+input, textarea {
+	font-family: arial;
+	font-size: 18px;
+	font-weight: bold;
+	color: blue;
+}
+</style>
+
+<script>
+	$(document).ready(function() {
+
+		$("#mongoTabs").tabs();
+	});
+</script>
+</head>
+
+<body>
+	<span id="stateDisplay"></span>
+	<table border="0">
+		<tr>
+			<td>DB <select id="dbSelect" onchange='$("#dbName").val($("#dbSelect").val());initCollections();'>
+					<option>&nbsp;</option>
+			</select> <input id="dbName">
+				<button onclick="createDB();">create DB</button>
+				<button onclick="replaceLatinChars();">...?</button>
+
+			</td>
+		</tr>
+
+		<!-- <tr>
+			 <td>
+				nature
+				<input id="nodeNatureName">
+				color
+				<input class="color"  id="nodeNatureColor" value="66ff00" onchange="onColorChange(this)"/>
+				<button onclick="createNodeNature();">create nature</button>
+			</td>
+		</tr>-->
+		<tr>
+			<td>queries <select id="qHistory" onchange="selectQuery();">
+					<option>&nbsp;</option>
+			</select>
+				<button onclick="loadQueries();">load</button>
+				<button onclick="saveQueries();">save</button>
+			</td>
+
+		</tr>
+		<tr>
+			<td>fields <input id="fields" size="50" value="{  }">
+			</td>
+
+		</tr>
+		<tr>
+			<td>json <textarea id="jsonStr" cols="100" rows="10">{  }</textarea>
+			</td>
+
+		</tr>
+
+		<tr>
+			<td>collection <select id="collSelect" onchange='$("#collectionName").val($("#collSelect").val());'>
+					<option>&nbsp;</option>
+			</select> <input id="collectionName">
+				<button onclick="executeAction('get');">get</button>
+				<button onclick="executeAction('exportJson');">get JSON</button>
+				<button onclick="executeAction('importJson');">import JSON</button>
+				<button onclick="executeAction('exportCSV');">get CSV</button> <input id="csvSep" value=";" size="3">
+				<button onclick="executeAction('add');">create</button>
+				<button onclick="executeAction('update');">update</button>
+				<button onclick="executeAction('delete');">delete</button>
+
+
+
+
+				<button onclick="executeScript();">execute script</button> <input type="checkbox" id="colHeader" checked="checked" />withColHeader
+
+			</td>
+		</tr>
+		<tr>
+	</table>
+	<div id="mongoTabs">
+		<ul>
+			<li><a href="#spreadsheetDiv">Spreadsheet</a></li>
+			<li><a href="#csvDiv">CSV</a></li>
+
+		</ul>
+		<!--  <div id="tabs-radarLeft-filters">-->
+		<div id="spreadsheetDiv">
+			<div id="resultSheet"></div>
+		</div>
+		<div id="csvDiv">
+			<textarea id="resultTextArea" cols="160" rows="10"></textarea>
+
+		</div>
+	</div>
+
+</body>
+</html>

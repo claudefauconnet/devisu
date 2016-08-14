@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.structure.min.css" />
+
+<style>
+body {
+	font-family: verdana, sans-serif;
+}
+
+
+#accordionContainer {
+	width: 350px;
+	height: 400px;;
+}
+
+#accordion .ui-accordion-content {
+	width: 95%;
+	max-height: 250px;
+	/*background-color: #f3f3f3;*/
+	color: #777;
+	color: black;
+	font-size: 12px;
+	overflow: auto;
+	line-height: normal;
+	padding :2px;
+}
+	
+}
+
+#accordion .ui-accordion-header {
+	font-size: 10pt;
+	line-height: normal;
+	background-color: grey;
+	color: brown;
+	font-weight: normal;
+}
+
+#idSpan {
+	font-size: 8px;
+}
+
+#nameRead {
+	font-size: 12px;
+	font-weight: bold;
+	color: #b18527;
+}
+</style>
+
+
+
+
+
+
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+
+
+<script src="js/infosAbstract.js" charset="UTF-8"></script>
+<script src="js/infosUseCase.js" charset="UTF-8"></script>
+
+
+
+
+
+
+
+</head>
+<body>
+<span id="nameRead"></span></br>
+	<button onclick="saveUseCase()">Save</button>
+	
+	
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="idSpan">000000</span>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="deleteUseCase()">Delete</button>
+	<div id="accordionContainer">
+		<div id="accordion">
+		
+		
+		
+		<h3>Description</h3>
+			<div id="descriptionDiv"></div>
+
+
+			<h3>Attributes</h3> 	
+			<div id="AttrsSpan"></div>
+		
+		
+			<h3> Technologies and Digital Capabilities</h3>
+			<div id="useCaseSpan">
+				<table>
+					<tr>
+						<td>Technology <select id="useCaseTechnologiesSelect"
+							onchange="setNewUseCaseDCsAndTechnos()"></select></td>
+					</tr>
+					<tr>
+						<td>
+							<div id="ulNewDcs">
+								
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							<hr>
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							<div id="oldUseCaseDsAndTechnos">
+								<ul id="ulOldDcs"></ul>
+							</div>
+						</td>
+
+					</tr>
+
+
+				</table>
+
+
+			</div>
+
+
+
+
+
+
+
+			
+
+			<h3>Blog</h3>
+			<div>
+
+				<textArea cols='60' rows='20' id="blogSpan"></textArea>
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+	<div id="stateDisplay"></div>
+</body>
+</html>

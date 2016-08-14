@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="print" type="text/css" title="Design" href="style.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="style.css" />
+<script src="../../js/browser.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/details.js"></script>
+<script src="../../js/radarXml.js"></script>
+<script src="../../js/tinymce/tinymce.min.js"></script>
+
+
+<script>
+window.onload = function() {
+	init();
+}
+
+</script>
+</head>
+<body>
+<div id="menu">
+<input type="button" value="X" id="bClose"  onclick="hidePopup();">
+<input type="button" value="modify" id="bModifyMode"style="visibility:hidden" onclick="setModifyMode();">
+<input type="button" value="save" id="bSave" style="visibility:hidden" onclick="saveItem();">
+<input type="button" value="cancel" id="bCancel"  style="visibility:hidden" onclick="setReadMode();">
+<input type="button" value="delete" id="bDelete" style="visibility:hidden" onclick="deleteItem();">
+<div id="stateDisplay">---</div>
+</div>
+<div id="content">
+
+<form name="detailsForm">
+
+<div class='label firstName' id='label_firstName'>firstName</div>
+<div class='field' id='field_firstName'>firstName</div>
+<div class='label lastName' id='label_lastName'>lastName</div>
+<div class='field' id='field_lastName'>lastName</div>
+<div class='label role' id='label_role'>role</div>
+<div class='field' id='field_role'>role</div>
+<div class='label radar' id='label_radar'>radar</div>
+<div class='field' id='field_radar'>radar</div>
+<div class='label password' id='label_password'>password</div>
+<div class='field' id='field_password'>password</div>
+
+
+
+</form>
+</div>
+
+</body>
+</html>

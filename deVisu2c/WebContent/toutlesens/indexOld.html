@@ -1,0 +1,504 @@
+
+<!--  **************************  TOUTLESENS LICENCE*************************
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Claude Fauconnet claude.fauconnet@neuf.fr
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+********************************************************************** -->
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+MATCH (CC:CC{id:4})-[r]-(SC:SC)-[r3]-(UC:UC)-[r2]-(Techno:Techno)return SC,Techno,UC
+position.endNode().getProperty('name').contains('EP')
+
+
+
+ -->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>toutlesens</title>
+
+
+
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" media="screen"
+	href="js/handsonetable/jquery.handsontable.full.min.css">
+
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="css/d3.css" />
+<link rel="stylesheet" href="js/jquery/rangeSlider/classic.css">
+<link rel="stylesheet" href="js/jquery/rangeSlider/style.css">
+
+<script src="js/jquery/jquery.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/handsonetable/jquery.handsontable.full.min.js"></script>
+<script src="js/spreadsheetClass.js"></script>
+
+<script src="js/toutlesens.js"></script>
+<script src="js/d3/d3.js"></script>
+<script src="js/forceGraphClass.js"></script>
+<script src="js/dndTreeClassV2.js"></script>
+
+<script src="js/toutlesens2.js"></script>
+
+<script src="js/chronology.js"></script>
+<script src="js/modifyData.js"></script>
+<script src="js/externalResources.js"></script>
+
+
+<script src="js/jquery/jquery.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/jquery/jQDateRangeSlider-withRuler-min.js"></script>
+
+<style>
+#message {
+	width: 400px;
+	height: 40px;
+	color: red;
+	font-size: 12px;
+	overflow: auto;
+	visibility: hidden;
+}
+
+#resultX {
+	border: 5px;
+}
+
+body {db /data/transaction/commit overflow:auto;
+	font-size: 14px;
+	font-family: sans-serif, verdana;
+	vertical-align: top;
+}
+
+#tabs {
+	background-color: #ffc;
+}
+
+#topPanel {
+	width: 100%;
+	height: 100px;
+	background-color: #fff;
+	overflow: none;
+	java-script background-color: #eed;
+}
+
+#bottomPanel {
+	width: 100%;
+	top: 100px;
+	position: absolute;
+	height: calc(100% - 200px);
+	background-color: #fff;
+	overflow: none;
+	border-color: #eee;
+	border-style: solid;
+	border: thin;
+	visibility: hidden;
+}
+
+#spreadSheetDiv, #graphContainerDiv, #popupTextarea {
+	border: thin;
+	border-color: #eee;
+	border-style: solid;
+	position: relative;
+	top: 0px;
+	height: calc(100% - 200px);
+	height: 400px;
+	overflow: auto;
+	width: calc(100% - 350px);
+	width: 200px;
+}
+
+#spreadSheetDiv {
+	position: absolute;
+	visibility: hidden;
+	top: 120px;
+	overflow: auto;
+	width: 100%;
+	height: 510px;
+	background-color: #ddd;
+}
+
+#graphContainerDiv {
+	background-color: #eee;
+	overflow: auto;
+	width: 550px;
+	height: 550px;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+}
+
+#popupTextarea {
+	left: 30vw;
+	width: 69vw;
+	visibility: hidden;
+	margin: 5px;
+}
+
+#tabs-query {
+	background-color: white;
+}
+
+#popup {
+	position: relative;
+	visibility: hidden;
+	width: 200px;
+	background-color: #ddd;
+	border-style: 20solid;
+	border-color: red;
+	border-width: 2px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #eed;
+}
+
+#bottomLeftPanel {
+	width: 250px;
+	background-color: #fff;
+	margin: 10px;
+	padding: 5px;
+	height: 400px;
+	overflow: auto;
+}
+
+#infoPanel {
+	background-color: #eee;
+	margin: 10px;
+	padding: 10px;
+	height: 250px;
+	width: 400px;
+	overflow: auto;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+}
+
+#imagePanel {
+	background-color: #eee;
+	padding: 10px;
+	height: 250px;
+	overflow: auto;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+}
+
+.fill0ScreenHeight {
+	height: calc(100% - 300px);
+}
+
+#outputModeHome {
+	ddd visibility: visible;
+}
+
+#wordsSelect, #nodesLabelsSelect, #word {
+	border-style: solid;
+	border-color: grey;
+	border-width: 2px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.breadcrumb {
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
+	background-color: #eed;
+	visibility: hidden;
+	font-weight: bold; //
+	width: 900px;
+}
+
+a:link, a:visited #infoPanel {
+	font-style: italic;
+	color: grey;
+	font-size: 12px;
+}
+
+a:link, a:visited .breadcrumb-item {
+	font-size: 12px;
+}
+
+a:link, a:visited .chronoSheet {
+	font-style: italic;
+	font-size: 12px;
+}
+
+#chronoParams {
+	background-color: #eed;
+	visibility: hidden;
+	height: 0px;
+}
+
+.chronoSheet {
+	border: medium;
+	border-color: #662211;
+	border-bottom-style: solid;
+	width: 520px;
+}
+
+#rangeSlider {
+	font-style: italic; 4
+	font-size: 12px;
+}
+
+#modifyControls, #inputPanel {
+	background-color: #bbd;
+	visibility: hidden;
+}
+
+#inputPanelXXX {
+	background-color: #aac;
+	margin: 10px;
+	padding: 10px;
+	overflow: auto;
+	visibility: hidden;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+	height: 2px;
+	height: auto;
+}
+
+#currentNodeSpan {
+	color: blue;
+}
+
+/*********************** force Collapse******************/
+circle.node {
+	cursor: pointer;
+	stroke: #000;
+	stroke-width: .5px;
+}
+
+line.link {
+	fill: none;
+	stroke: #9ecae1;
+	stroke-width: 1.5px;
+}
+
+.nodeText {
+	font-family: verdana, sans-serif;
+	font-size: 8px;
+	color: blue;
+}
+
+.link {
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 1px;
+}
+</style>
+
+
+
+
+
+
+</head>
+<body>
+
+
+	<div id="topPanel">
+
+		<table border="0">
+
+
+			<tr>
+				<td><B>Chercher </B> par type</td>
+				<td>par mot clé</td>
+				<td><B>Visualiser à partir de </B></td>
+
+
+
+			</tr>
+
+			<tr>
+
+				<td><select id="nodesLabelsSelect" onchange=onLabelSelect(this)><option></option></select></td>
+				<td><input id="word" onkeyup="searchNodes(this,null)"></td>
+				<td><select id="wordsSelect" onchange="onWordSelect(this)"><option>----------</option></select></td>
+				<td><span id="modifyPalette">
+						<button onclick="onShowInputMode()">Modif.</button>
+				</span></td>
+			</tr>
+			<tr>
+
+
+				<td align="center"><B>Representation</B></td>
+				<td colspan="3">
+					<div>
+						<input type="radio" id="outputModeHome" name="OM" value="LIST"
+							checked="checked" onchange="getGraphDataAroundNode()">Liste
+
+
+						<!-- <input type="radio" id="outputModeHome" name="OM" value="GRAPH"
+										onchange="getGraphDataAroundNode()">Roue  -->
+						<input type="radio" id="outputModeHome" name="OM" value="TREE"
+							onchange="getGraphDataAroundNode()">Arbre <input
+							type="radio" id="outputModeHome" name="OM" value="GRAPH2"
+							checked="checked" onchange="getGraphDataAroundNode()">Roue
+						&nbsp; distance <select id="numberOfLevels"
+							onchange="getGraphDataAroundNode()">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							
+
+
+						</select>
+						<button onclick="zoomIn();"> zoomIn</button>
+							<button onclick="zoomOut();"> zoomOut</button>
+						<!--  	cahrge<input id="charge" value="-200">
+							distance<input id="distance" value="100">
+							coef<input id="coef" value="1">
+						-->
+						
+						<input type="hidden" value="500" id="limitResult"> 
+						<!--  	<input type="radio"
+										id="outputModeHome" name="OM" value="CHRONOCHART"
+										onchange="getGraphDataAroundNode()">chronologie -->
+					</div>
+
+				</td>
+
+
+
+			</tr>
+
+
+			<!--  	<tr>
+							<td colspan="3"><div id="message"></div></td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								
+							</td>
+						</tr>-->
+
+
+
+
+		</table>
+	</div>
+
+
+
+
+
+
+	<div id="bottomPanel" class="fillScreenHeight">
+<span id="anchorDiv"></span>
+		<table id="bottomLeftPanel" border="0">
+
+			<tr>
+				<td valign="top">
+
+					<div id="infoPanel"></div>
+				<td valign="top" rowspan="2" align="left">
+					<div id="chronoParams">
+
+
+						<div id="timeSlider"></div>
+						civilisation<select id="chronoCivilisationSelect"
+							onchange="drawChronoChart()">
+							<option></option>
+						</select>&nbsp; <span id="eventTypes"> <input type="checkbox"
+							id="eventType" name="eventType" onchange="drawChronoChart()"
+							checked="checked" value="Personne">Personne <input
+							type="checkbox" id="eventType" name="eventType"
+							onchange="drawChronoChart()" checked="checked" value="Evenement">Evenement
+							<input type="checkbox" id="eventType" name="eventType"
+							onchange="drawChronoChart()" checked="checked" value="Oeuvre">Oeuvre
+						</span>
+					</div>
+<span id="anchorZoomOutSpan">
+					<div id="graphContainerDiv">
+						<div id="modifyControls">
+							Noeud
+							<button id="ModifyNodeButton" onclick="onModifyNodeButton()">Modifier
+							</button>
+							-
+							<button id="copyNodeButton" onclick="onCopyNodeButton()">Copier
+							</button>
+							<span id="currentNodeSpan"></span>
+							<button id="linkNodeButton" onclick="onLinkNodeButton()">Lier...
+							</button>
+
+						</div>
+
+						<div id="graphDiv"></div>
+						<div id="popup"></div>
+</span>
+
+
+
+
+					</div>
+
+				</td>
+
+			</tr>
+			<tr align="center">
+
+				<td valign="top">
+
+					<div id="imagePanel"></div>
+				</td>
+
+
+			</tr>
+			<tr align="left">
+
+				<td colspan="2">
+					<div class="breadcrumb">
+						<button onclick='$("#breadcrumb").html("")'>effacer</button>
+						&nbsp;&nbsp;<span id="breadcrumb"></span>
+					</div>
+				</td>
+
+
+			</tr>
+
+
+
+
+
+		</table>
+
+
+
+	</div>
+
+
+
+
+	<!-- 
+		<div id="spreadSheetDiv"></div>
+	
+ -->
+
+
+</body>
+</html>

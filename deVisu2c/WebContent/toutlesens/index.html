@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="js/jquery/jquery.splitter.css" />
+
+<link rel="stylesheet" href="js/jsTree/themes/default/style.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/jquery/jquery.splitter.js"></script>
+
+<!--  <script src="js/others/KolorWheel.js"></script>-->
+<script src="js/jsTree/jstree.min.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/toutlesens.js"></script>
+<script src="js/d3/d3.js"></script>
+<script src="js/forceGraphClass.js"></script>
+<script src="js/dndTreeClassV2.js"></script>
+
+<script src="js/toutlesens2.js"></script>
+
+<script src="js/chronology.js"></script>
+<script src="js/modifyData.js"></script>
+<script src="js/externalResources.js"></script>
+
+<!--  <script src="js/devisuProxy.js" charset="UTF-8"></script>-->
+
+
+
+
+<script>
+	processDataBeforeDrawingCallback = null;
+	$(function() {
+		$('#main').width("100%").height("100%").split({
+			orientation : 'vertical',
+			limit : 100,
+			position : "410px"
+		});
+
+		$("#tabs-radarLeft").tabs();
+		$("#radarDiv").width(860).height(560);
+
+		var queryParams = getQueryParams(document.location.search);
+		var radarModelName = queryParams.radarModelName;
+
+		filterDiv = "radarFiltersDiv";
+		bcsTreeDiv = "#bcsTreeDiv";
+		radarDiv = "#radarDiv";
+		attrsIFrame = "#attrsIframe";
+
+	});
+</script>
+<body>
+
+
+	<div id="main">
+
+		<div id="left">
+
+			<div id="left-radar">
+				<!-- &nbsp; <a href='javascript:resetEnumFilters();'>reset</a> &nbsp;
+				<div id="breadcrumbParent">
+					<span id="breadcrumb"></span>
+				</div> 
+				<span>&nbsp;</span>-->
+				<span id="radarTitle"></span>
+				<div id="stateDisplay"></div>
+				<div id="tabs-radarLeft">
+					<ul>
+						<li><a href="#radarFiltersTab">chercher</a></li>
+						<li><a href="#legendTab">legende</a></li>
+						<li><a href="#attrsTab">données</a></li>
+						<li><a href="#modfifyTab">Modfier</a></li>
+						<li><a href="#toolsTab">Tools</a></li>
+					</ul>
+					<div id="legendTab">
+						<div id="legend"></div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<!--  ****************************************************filters***************************-->
+
+
+					<div id="radarFiltersTab">
+						<div id="topPanel">
+							<table border="0">
+								<tr>
+									<td><B>Chercher </B> par type</td>
+									<td><select id="nodesLabelsSelect"
+										onchange=onLabelSelect(this)><option></option></select></td>
+								</tr>
+
+								<tr>
+
+									<td>par mot clé</td>
+									<td><input id="word" onkeyup="searchNodes(this,null)"></td>
+								</tr>
+								<tr>
+
+									<td colspan="2"><B>Visualiser à partir de </B></td>
+								</tr>
+								<tr>
+									<td colspan="2"><select id="wordsSelect"
+										onchange="onWordSelect(this)"><option>----------</option></select></td>
+
+
+								</tr>
+								<tr>
+
+
+
+
+
+
+
+									<td align="center"><B>Representation</B></td>
+									<td>
+										<div>
+											<input type="radio" id="outputModeHome" name="OM"
+												value="LIST" checked="checked"
+												onchange="getGraphDataAroundNode()">Liste
+
+
+											<!-- <input type="radio" id="outputModeHome" name="OM" value="GRAPH"
+										onchange="getGraphDataAroundNode()">Roue  -->
+											<input type="radio" id="outputModeHome" name="OM"
+												value="TREE" onchange="getGraphDataAroundNode()">Arbre
+											<input type="radio" id="outputModeHome" name="OM"
+												value="GRAPH2" checked="checked"
+												onchange="getGraphDataAroundNode()">Roue &nbsp;
+										</div>
+									</td>
+								</tr>
+								<tr>
+
+									<td colspan="2">distance <select id="numberOfLevels"
+										onchange="getGraphDataAroundNode()">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+
+									</select>
+										<button onclick="zoomIn();">zoomIn</button>
+										<button onclick="zoomOut();">zoomOut</button> <!--  	cahrge<input id="charge" value="-200">
+							distance<input id="distance" value="100">
+							coef<input id="coef" value="1">
+						--> <input type="hidden" value="500" id="limitResult"> <!--  	<input type="radio"
+										id="outputModeHome" name="OM" value="CHRONOCHART"
+										onchange="getGraphDataAroundNode()">chronologie -->
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!--  ****************************************************modify***************************-->
+					<div id="modifyTab">
+
+						<span id="modifyPalette">
+							<button onclick="onShowInputMode()">Modif.</button>
+						</span>
+							<div id="modifyControls">
+									Noeud
+									<button id="ModifyNodeButton" onclick="onModifyNodeButton()">Modifier</button>
+									-
+									<button id="copyNodeButton" onclick="onCopyNodeButton()">Copier
+									</button>
+									<span id="currentNodeSpan"></span>
+									<button id="linkNodeButton" onclick="onLinkNodeButton()">Lier...
+									</button>
+
+								</div>
+					</div>
+
+					<!--  ****************************************************attrs***************************-->
+					<div id="attrsTab">
+
+						<div id="bottomPanel" class="fillScreenHeight">
+							<span id="anchorDiv"></span>
+							<table id="bottomLeftPanel" border="0">
+
+								<tr>
+									<td valign="top">
+
+										<div id="infoPanel"></div> <td valign="top" rowspan="2" align="left">
+							<div id="chronoParams">
+
+
+								<div id="timeSlider"></div>
+								civilisation<select id="chronoCivilisationSelect"
+												onchange="drawChronoChart()">
+									<option></option>
+								</select>&nbsp; <span id="eventTypes"> <input type="checkbox"
+												id="eventType" name="eventType" onchange="drawChronoChart()"
+												checked="checked" value="Personne">Personne <input
+												type="checkbox" id="eventType" name="eventType"
+												onchange="drawChronoChart()" checked="checked"
+												value="Evenement">Evenement <input type="checkbox"
+												id="eventType" name="eventType" onchange="drawChronoChart()"
+												checked="checked" value="Oeuvre">Oeuvre
+								</span> <span id="anchorZoomOutSpan"></span>
+
+							
+
+
+
+
+
+							</div>
+
+						</td>
+
+					</tr>
+					<tr align="center">
+
+						<td valign="top">
+
+							<div id="imagePanel"></div>
+						</td>
+
+
+					</tr>
+					<tr align="left">
+
+						<td colspan="2">
+							<div class="breadcrumb">
+								<button onclick='$("#breadcrumb").html("")'>effacer</button>
+								&nbsp;&nbsp;<span id="breadcrumb"></span>
+							</div>
+						</td>
+
+
+					</tr>
+
+
+
+
+
+				</table>
+
+
+
+			</div>
+		</div>
+		
+		
+		<!--  ****************************************************tools***************************-->
+				<div id="toolsTab">
+						<div id="paramsDiv">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				
+									</div>
+			</div>
+		</div>
+		
+	
+		
+		
+
+		
+	</div>
+<!--  ****************************************************graph***************************-->
+
+		<div id="center">
+
+			<div id="graphDiv"></div>
+			<div id="popup"></div>
+		</div>
+
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+	<!-- schema xsd du POT 
+	objet : interface d'échange des contenus du POT entre 
+		les differents applicatifs 
+		auteur : C.Fauconnet Total DSIT/SPSI/IN
+		version :2.0.2
+		date : 05/12/2013 -->
+		 
+	<xs:element name="cont" type="contType" />
+	
+	
+	
+	<xs:complexType name="contType">
+		<xs:sequence>
+			<xs:element type="elemType" name="elem" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="elemType">
+		<xs:sequence>
+			<xs:element type="xs:int" name="id" />
+			<xs:element type="titreType" name="titre" />
+			<xs:element type="posType" name="position" /><!-- anciennement 
+				pos -->
+
+			<!-- elements deja existants renommés et enumérés explicitement -->
+			<xs:element type="availabilityType" name="availability" /><!-- 
+				anciennement temps -->
+			<xs:element type="businessValueType" name="businessValue" /><!-- 
+				anciennement axe -->
+			<xs:element type="maturityType" name="maturity" /><!-- anciennement 
+				mat -->
+			<!--FIN elements deja existants renommés et enumérés explicitement -->
+
+			<xs:element type="priorityType" name="priority" />	<!-- nouvel elements -->
+			<!-- supprimé : <xs:element type="domType" name="dom" /> -->
+			<xs:element type="domainesType" name="domaines" />
+			<xs:element type="infType" name="inf" />
+			<xs:element type="usageType" name="usage" />
+			<xs:element type="exType" name="ex" />
+			<xs:element type="mediaType" name="media" />
+
+			<!-- fiche détaillée non utilisé dans plugIN PPT -->
+			<xs:element type="xs:string" name="detailedDefinition" />
+			<xs:element type="xs:string" name="detailedUses" />
+			<!--FIN fiche détaillée non utilisé dans plugIN PPT -->
+
+			<!-- examples détaillés non utilisé dans plugIN PPT -->
+			<xs:element type="detailedExamplesType" name="detailedExamples" />
+			<!--FIN examples détaillés non utilisé dans plugIN PPT -->
+
+
+			<!-- fiche Total -->
+			<xs:element type="xs:string" name="useCases" /><!--CDATA -->
+			<xs:element type="xs:string" name="benefits" /><!--CDATA -->
+			<xs:element type="xs:string" name="impact" /><!--CDATA -->
+			<xs:element type="activitiesType" name="activities" />
+			<xs:element type="valueType" name="values" />
+			<xs:element type="changeType" name="changes" />
+			<!-- FIN fiche Total -->
+
+			<!-- relations technos pratiques -->
+			<xs:element type="linkedElemsType" name="linkedElems" />
+			<xs:element type="elemNatureType" name="elemNature"
+				maxOccurs="1" minOccurs="0" />
+			<!-- relations technos pratiques -->
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="technologie" use="optional" />
+	</xs:complexType>
+	
+
+	<!-- supprimé <xs:complexType name="domType"> <xs:simpleContent> <xs:extension 
+		base="xs:string"> <xs:attribute type="xs:byte" name="bureau" use="optional" 
+		/> <xs:attribute type="xs:byte" name="client" use="optional" /> <xs:attribute 
+		type="xs:byte" name="mobilite" use="optional" /> <xs:attribute type="xs:byte" 
+		name="usine" use="optional" /> </xs:extension> </xs:simpleContent> </xs:complexType> -->
+		
+		
+	<xs:complexType name="titreType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="point" />
+			<xs:element type="xs:string" name="fiche" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="posType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:float" name="x" use="required" />
+				<xs:attribute type="xs:float" name="y" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="domainesType">
+		<xs:sequence>
+			<xs:element type="xs:byte" name="domaine" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="infType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="img" />
+			<xs:element type="xs:string" name="corps" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="usageType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="img" />
+			<xs:element type="xs:string" name="corps" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="exType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="img" />
+			<xs:element type="xs:string" name="corps" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="mediaType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="img" />
+			<xs:element type="xs:string" name="corps" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+
+	<xs:complexType name="activitiesType">
+		<xs:sequence>
+			<xs:element name="activity" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="" />
+						<xs:enumeration value="exploration-science" />
+						<xs:enumeration value="industrial project" />
+						<xs:enumeration value="industrial production" />
+						<xs:enumeration value="logistics" />
+						<xs:enumeration value="trading" />
+						<xs:enumeration value="marketing" />
+						<xs:enumeration value="sales-services" />
+						<xs:enumeration value="RD-innovation" />
+						<xs:enumeration value="communication" />
+						<xs:enumeration value="IT" />
+						<xs:enumeration value="others support activities" />
+						
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="valueType">
+		<xs:sequence>
+			<xs:element name="valueItem" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="" />
+						<xs:enumeration value="productivity" />
+						<xs:enumeration value="image" />
+						<xs:enumeration value="cost reduction" />
+						<xs:enumeration value="new business" />
+						<xs:enumeration value="HSEQ" />
+						<xs:enumeration value="compliance" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="changeType">
+		<xs:sequence>
+			<xs:element name="changeItem" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="" />
+						<xs:enumeration value="process" />
+						<xs:enumeration value="skills" />
+						<xs:enumeration value="usages" />
+						<xs:enumeration value="IT" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="linkedElemsType">
+		<xs:sequence>
+			<xs:element type="linkedElemType" name="linkedElem"
+				maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="linkedElemType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="name" />
+			<xs:element type="xs:int" name="id" />
+			<xs:element type="elemNatureType" name="type" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="detailedExamplesType">
+		<xs:sequence>
+			<xs:element type="detailedExampleType" name="detailedExample"
+				maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="detailedExampleType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="img" />
+			<xs:element type="xs:string" name="corps" />
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="availabilityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="short term" />
+			<xs:enumeration value="middle term" />
+			<xs:enumeration value="long term" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="businessValueType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="low" />
+			<xs:enumeration value="medium" />
+			<xs:enumeration value="high" />
+
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maturityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<!-- valeurs à revoir -->
+			<xs:enumeration value="emerging" />
+			<xs:enumeration value="adolescent" />
+			<xs:enumeration value="early adopter" />
+			<xs:enumeration value="mainstream" />
+
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="priorityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="-1" />
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="elemNatureType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="technology" />
+			<xs:enumeration value="practice" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

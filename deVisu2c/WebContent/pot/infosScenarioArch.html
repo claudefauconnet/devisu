@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.structure.min.css" />
+
+<style>
+body {
+	font-family: verdana, sans-serif;
+}
+
+#accordionContainer {
+	width: 350px;
+	height: 400px;
+}
+
+#accordion .ui-accordion-content {
+	width: 95%;
+	max-height: 140px;
+	/*background-color: #f3f3f3;*/
+	color: #777;
+	color: black;
+	font-size: 12px;
+	overflow: auto;
+	line-height: normal;
+	padding: 2px;
+}
+
+#accordion .ui-accordion-header {
+	font-size: 10pt;
+	line-height: normal;
+	background-color: grey;
+	color: brown;
+	font-weight: normal;
+}
+
+#bbComment {
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	width: 95%;
+	height: 140px;
+	font-size: 10pt;
+	line-height: normal;
+	width: 95%;
+}
+
+#idSpan {
+	font-size: 8px;
+}
+
+#nameSpan {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#buidingBlocksSpan {
+	width: 300px;
+	height: 200px;
+	font-size: 12px;
+	overflow: auto;
+}
+</style>
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+
+<script src="js/infosAbstract.js" charset="UTF-8"></script>
+<script src="js/infosScenarioArch.js" charset="UTF-8"></script>
+<style>
+body{
+	   font-family: verdana, sans-serif;
+	    background-color: #f3edef;
+	   
+	      font-size: 12px;
+}
+</style>
+</head>
+<body>
+	<div>
+		<b>scenarios</b>
+		<br> <select id="scenarioSelect"
+			onchange="loadScenario()"></select>
+	</div>
+
+	<button onclick="saveScenarioBuildingBlocks()">Save</button>
+	<button onclick="showAllbuidingBlocks()">show all</button>
+	<button onclick="addBuidlingBlock()">add</button>
+<br>
+	<b>Building blocks</b>
+	<br>
+	<div id="buidingBlocksSpan"></div>
+	<div id="bbCommentTitle"></div>
+	<textArea id="bbComment" onblur="setbbComment()"></textArea>
+	<br>
+	<!--  <button onclick="generateSVG()">save map</button>-->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

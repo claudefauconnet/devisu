@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8">
+<title>POT</title>
+
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="css/index.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+
+
+
+<script>
+	var ctrlKeyPressed = false;
+	var queryParams = getQueryParams(document.location.search);
+	if (!dbName)
+		dbName = "POT2016";
+
+	$(function() {
+
+		if (authentify) {
+			$("#loginDiv").css("visibility", "visible");
+			$("#popupMask").css("visibility", "visible");
+		} else {
+			$("#tabs").tabs();
+		}
+		checkBu()
+		
+		setBuList();
+	
+		//full screen support
+		/*	$(".fullscreen-supported").toggle($(document).fullScreen() !== null);
+			$(".fullscreen-not-supported").toggle($(document).fullScreen() === null);
+
+			$(document).bind("fullscreenchange", function(e) {
+				if (!$(document).fullScreen()) {
+					fullScreen(false);
+				}
+			});
+
+			$(document).bind("fullscreenerror", function(e) {
+				console.log("Full screen error.");
+				//$("#messageDiv").text("Browser won't enter full screen mode for some reason.");
+			});*/
+
+	});
+
+
+	function setIframesSrc() {
+		
+		filters = "";
+		for ( var key in queryParams) {
+			filters += "&";
+			filters += key;
+			filters += "=" + encodeURIComponent(queryParams[key]);
+		}
+
+		$("#TechnoIframe").attr(
+				"src",
+				"radar.html?radarModelName=Technologies");
+
+		$("#UCiframe").attr(
+				"src",
+				"radar.html?dbName="+ dbName
+						+ "&radarModelName=UseCases"
+						+ filters);
+		
+		$("#SCiframe").attr(
+				"src",
+				"radar.html?dbName=" + dbName
+						+ "&radarModelName=ScenariosRadar");
+		
+		$("#ScArchiframe").attr(
+				"src",
+				"radar.html?dbName="+ dbName
+						+ "&radarModelName=ScenariosArch"
+						);
+		$("#ScArchiframe").attr(
+				"src",
+				"radar.html?dbName="+ dbName
+						+ "&radarModelName=ScenariosArch"
+						);
+	
+	/*	$("#Graphiframe").attr(
+				"src",
+				"/toutlesens0.9d/?subGraph=POT"
+						);*/
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+	
+	function checkBu(){
+		if(!queryParams.bu){
+			
+			var left=$(window).width();
+			left=(left/2)-200;
+			var top=$(window).height();
+			top=(top/2)-100;
+			$("#chooseBuDiv").css("left",left);
+			$("#chooseBuDiv").css("top",top);
+			$("#chooseBuDiv").css("visibility","visible")
+		}
+		else{
+			setIframesSrc();
+		}
+		
+	}
+	function hideChooseBuDiv(){
+		queryParams.bu=$("#chooseBUSelect").val();
+		//$("#currentBUdiv")
+		setIframesSrc();
+			$("#chooseBuDiv").css("visibility","hidden")
+	
+		
+	}
+	function setBuList() {
+		var bus = proxy_getDistinct(dbName, "use_cases_tree", {
+			type : "BU"}, "text");
+		bus.sort();
+		bus.splice(0,0,"")
+		fillSelectOptionsWithStringArray(chooseBUSelect, bus);
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div id="stateDisplay"></div>
+	<div id="tabs">
+		<ul>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#technoRadar">Technologies</a></li>
+			<li><a href="#useCaseRadar">Use Cases </a></li>
+	 		<li><a href="#scenarioRadar">Scenarios </a></li>
+	 		<li><a href="#scenarioArch">Scenarios arch. </a></li>
+	<li><a href="#graph">Global Graph </a></li>
+			
+
+		</ul>
+		<div id="home">
+			<!--   <iframe  width="100%" height="600px" src="tagHistory.html" style="overflow: auto"></iframe>-->
+			<iframe width="100%" height="600px" src="home.html"
+				style="overflow: auto"></iframe>
+
+		</div>
+		<div id="technoRadar">
+			<iframe id="TechnoIframe" width="100%" height="600px" src=""
+				style="overflow: auto"></iframe>
+		</div>
+		<div id="useCaseRadar">
+			<iframe id="UCiframe" width="100%" height="600px" src=""
+				style="overflow: auto"></iframe>
+		</div>
+			<div id="scenarioRadar">
+			<iframe id="SCiframe" width="100%" height="600px" src=""
+				style="overflow: auto"></iframe>
+		</div>
+	
+			<div id="scenarioArch">
+			<iframe id="ScArchiframe" width="100%" height="600px" src=""
+				style="overflow: auto"></iframe>
+		</div>
+			<div id="graph">
+			<iframe id="Graphiframe" width="100%" height="600px" src=""
+				style="overflow: auto"></iframe>
+		</div>
+	</div>
+
+
+
+
+	<div id="loginDiv">
+		<div align="center">
+			<p>Login</p>
+			<input id="login" name="login">
+			<p>Password</p>
+			<p>
+				<input id="password0" type="password" name="password">
+			</p>
+			<p>
+				<input type="button" name="OK" value="Ok"
+					onclick='submitPassword("#login","#password0");' > <a
+					href="javascript:showChangePassWordDiv(); ">change password</a>
+			</p>
+			<p>
+				<br /> <font color="red "></font>
+			</p>
+		</div>
+
+	</div>
+	<div id="changePaswordDiv">
+		<div align="center">
+			<p>Login</p>
+			<input id="login2" name="login2">
+			<p>old Password</p>
+			<p>
+				<input id="passwordOld" type="password" name="password ">
+			</p>
+			<p>new Password</p>
+			<p>
+				<input id="passwordNew1" type="password" name="password ">
+			</p>
+			<p>repeat new Password</p>
+			<p>
+				<input id="passwordNew2" type="password" name="password ">
+			</p>
+			<p>
+			<input type="button" name="OK" value="Ok" onclick="changePassword();">
+			</p>
+		</div>
+	</div>
+	
+	<div id="chooseBuDiv">
+	select a Business Unit<br>
+	<select id="chooseBUSelect" onchange="hideChooseBuDiv()">
+	</select>
+	
+	</div>
+
+
+</body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,82 @@
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8">
+<title>POT</title>
+
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="css/index.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+
+
+
+
+<script type="text/javascript">
+	function editXmlModel() {
+		$("#adminIframe").attr('src', 'xmlEditor.html?dbName=' + dbName);
+	}
+
+	function showMongoFrame() {
+		$("#adminIframe").attr('src', 'adminMongo.html?dbName=' + dbName);
+	}
+
+	function showadminFrame() {
+		$("#adminIframe").attr('src', 'adminXX.html?dbName=' + dbName);
+	}
+	function showSqlFrame() {
+		$("#adminIframe").attr('src', 'adminSql.html');
+	}
+
+	function showExportFrame() {
+		$("#adminIframe").attr('src', 'exportRadar.html');
+	}
+</script>
+
+</head>
+<body>
+	<div id="stateDisplay"></div>
+
+	<table>
+		<tr>
+			<td><input type="button" id="editXmlModel"
+				value="edit Xml model" onclick="editXmlModel();">
+				&nbsp;&nbsp; <a
+				href="javascript:proxy_executeAction('resetAllDataManagers')">reset
+					server managers</a> &nbsp;&nbsp; <input type="button"
+				id="exportRadarXmlB" value="export radar Xml"
+				onclick="showExportFrame()"></td>
+		</tr>
+		<tr>
+			<td>Mongo <input type="button" id="adminB" value="admin console"
+				onclick="showadminFrame();"> &nbsp; <input type="button"
+				id="mongoB" value="Mongo console" onclick="showMongoFrame();">
+				&nbsp; <input type="button" id="sqlB" value="SQL console"
+				onclick="showSqlFrame();"> &nbsp; Max graph nodes visible<input
+				size="6" value="2500" id="maxGraphNodesVisible"> <a
+				href="../adminPOT.html" target="_blank"> admin Technos</a>&nbsp;<a
+				href="../adminPOT_usesCases.html" target="_blank"> admin Use
+					cases</a>
+
+			</td>
+		</tr>
+
+		<tr>
+			<td><iframe id="adminIframe" width="1030px" height="490px"
+					src=""></iframe></td>
+		</tr>
+
+	</table>
+
+
+</body>
+
+</html>

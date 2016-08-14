@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcmitype="http://purl.org/dc/dcmitype/"
+	targetNamespace="http://purl.org/dc/terms/" xmlns="http://purl.org/dc/terms/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:element name="radars" type="_radars" />
+	<xs:complexType name="_radars">
+		<xs:sequence>
+				<xs:element name="technologies" type="_radar" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+
+	<xs:complexType name="_radar" mixed="true">
+		<xs:sequence>
+			<xs:element type="_aclType" name="acl" maxOccurs="unbounded"
+				minOccurs="0" />
+			<xs:element type="_field" name="field" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xs:element type="_background" name="background"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element type="xs:string" name="foreignKey" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="name" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="title" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="dbName" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="collectionName" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="background-image"
+			use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="infosPage" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="displayType" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="leftColor" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="rightColor" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="multiValuedFieldSep"
+			use="required"></xs:attribute>
+
+	</xs:complexType>
+
+
+	<xs:complexType name="_background">
+		<xs:attribute type="xs:string" name="start-color" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="end-color" use="required"></xs:attribute>
+		<xs:attribute type="xs:integer" name="number-horizontal-steps"
+			use="required"></xs:attribute>
+		<xs:attribute type="xs:integer" name="number-radial-steps"
+			use="required"></xs:attribute>
+		<xs:attribute type="_backgroundOrder" name="order-horizontal-steps"
+			use="optional"></xs:attribute>
+		<xs:attribute type="_backgroundOrder" name="order-radial-steps"
+			use="optional"></xs:attribute>
+		<xs:attribute type="_backgroundType" name="type" use="required"></xs:attribute>
+	</xs:complexType>
+
+
+	<xs:simpleType name="_backgroundType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="radial" />
+			<xs:enumeration value="cartesian" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_backgroundOrder">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ascendant" />
+			<xs:enumeration value="descendant" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<xs:complexType name="_field" mixed="true">
+		<xs:sequence>
+			<xs:element type="_enumType" name="enum" maxOccurs="unbounded"
+				minOccurs="0" />
+			<xs:element type="xs:string" name="linkUrlPreffix"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element type="_aclType" name="acl" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="name" use="required"></xs:attribute>
+		<xs:attribute type="_fieldType" name="type" use="required"></xs:attribute>
+		<xs:attribute type="xs:boolean" name="mandatory" use="optional"></xs:attribute>
+		<xs:attribute type="_radarRole" name="radarRole" use="optional"></xs:attribute>
+		<xs:attribute type="xs:boolean" name="isFilter" default="true"
+			use="optional"></xs:attribute>
+		<xs:attribute type="xs:boolean" name="isMultivalued"
+			default="false" use="optional"></xs:attribute>
+		<xs:attribute type="xs:boolean" name="displayInDetailsPage"
+			default="true" use="optional"></xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="_enumType">
+		<xs:attribute type="xs:string" name="label" use="required"></xs:attribute>
+		<xs:attribute type="_enumShapeType" name="shape" default="circle"></xs:attribute>
+		<xs:attribute type="xs:string" name="color" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="size" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="width" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="height" use="optional"></xs:attribute>
+		<xs:attribute type="xs:string" name="symbol" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="_aclType">
+		<xs:attribute type="xs:string" name="groupName" use="required"></xs:attribute>
+		<xs:attribute type="_enumRightType" name="right" use="required"></xs:attribute>
+	</xs:complexType>
+
+
+	<xs:simpleType name="_enumRightType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none" />
+			<xs:enumeration value="read" />
+			<xs:enumeration value="write" />
+			<xs:enumeration value="admin" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_fieldType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="id" />
+			<xs:enumeration value="string" />
+			<xs:enumeration value="number" />
+			<xs:enumeration value="enum" />
+			<xs:enumeration value="date" />
+			<xs:enumeration value="text" />
+			<xs:enumeration value="richText" />
+			<xs:enumeration value="link" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_radarRole">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="id" />
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+			<xs:enumeration value="horizontalAxis" />
+			<xs:enumeration value="radialAxis" />
+			<xs:enumeration value="label" />
+			<xs:enumeration value="color" />
+			<xs:enumeration value="symbol" />
+			<xs:enumeration value="size" />
+			<xs:enumeration value="shape" />
+			<xs:enumeration value="comment" />
+			<xs:enumeration value="link" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_enumShapeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="circle" />
+			<xs:enumeration value="square" />
+			<xs:enumeration value="triangleUp" />
+			<xs:enumeration value="triangleDown" />
+			<xs:enumeration value="textBox" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+
+
+
+
+</xs:schema>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="css/radar.css" />
+<link rel="stylesheet" type="text/css" title="Design"
+	href="js/jquery/jquery-ui.min.css" />
+
+<link rel="stylesheet" type="text/css" title="Design"
+	href="js/jquery/jquery.splitter.css" />
+
+<link rel="stylesheet" href="js/jsTree/themes/default/style.min.css" />
+
+<script src="js/jquery/jquery-3.0.0.min.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script src="js/jquery/jquery.splitter.js"></script>
+<script src="js/d3/d3.js"></script>
+<script src="js/raphael.js"></script>
+<script src="js/others/KolorWheel.js"></script>
+<script src="js/jsTree/jstree.min.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/devisuProxy.js" charset="UTF-8"></script>
+<script src="js/radar.d3.js"></script>
+<script src="js/radar2.js"></script>
+<script src="js/radar.background.js"></script>
+<script src="js/radarXml2.js"></script>
+<script src="js/radarFilters.js"></script>
+<script src="js/radarRoles.js"></script>
+<script src="js/useCases.js"></script>
+
+
+
+
+<script>
+	processDataBeforeDrawingCallback = null;
+	$(function() {
+		$('#main').width("100%").height("100%").split({
+			orientation : 'vertical',
+			limit : 100,
+			position : "410px"
+		});
+
+		$("#tabs-radarLeft").tabs();
+		$("#radarDiv").width(860).height(560);
+
+		var queryParams = getQueryParams(document.location.search);
+		var radarModelName = queryParams.radarModelName;
+
+		filterDiv = "radarFiltersDiv";
+		bcsTreeDiv = "#bcsTreeDiv";
+		radarDiv = "#radarDiv";
+		attrsIFrame = "#attrsIframe";
+
+		dbName = "POT2016";
+		if (radarModelName == "ScenariosArch") {
+			$(attrsIFrame).attr("src", "infosScenarioArch.html?dbName="+dbName);
+			processDataBeforeDrawingCallback = function(data) {
+				// sort for z-index
+				data.sort(function(a, b) {
+					if (a.maturity == "layer")
+						return -1;
+					return 1;
+
+				});
+				// add textColor;
+				for (var i = 0; i < data.length; i++) {
+					if (data[i].maturity == "layer") {
+						data[i].textColor = "blue";
+						data[i].textBold = "y";
+					}
+
+				}
+			}
+		}
+
+		Radar_loadRadar(dbName, radarModelName, {});
+		loadBCsTree();
+		$("#radarTitle").html(dbName + " / " + radarModelName)
+	});
+</script>
+<body>
+
+
+	<div id="main">
+	
+		<div id="left">
+
+			<div id="left-radar">
+				<!-- &nbsp; <a href='javascript:resetEnumFilters();'>reset</a> &nbsp;
+				<div id="breadcrumbParent">
+					<span id="breadcrumb"></span>
+				</div> 
+				<span>&nbsp;</span>-->
+				<span id="radarTitle"></span>
+				<div id="stateDisplay"></div>
+				<div id="tabs-radarLeft">
+					<ul>
+						<li><a href="#legendTab">Legend</a></li>
+						<li><a href="#radarFiltersTab">Filters</a></li>
+						<li><a href="#attrsTab">Data</a></li>
+						<li><a href="#bcsTreeTab">Business tree</a></li>
+						<li><a href="#toolsTab">Tools</a></li>
+					</ul>
+					<div id="legendTab">
+						<div id="legend"></div>
+					</div>
+					<div id="attrsTab">
+						<span id="attrsTabMessage">Click a point to see its data</span>
+						<iframe id="attrsIframe"></iframe>
+
+					</div>
+
+					<div id="radarFiltersTab">
+						<div id="radarFiltersDiv"></div>
+					</div>
+					<div id="bcsTreeTab">
+						<div id="bcsTreeDiv"></div>
+					</div>
+					<div id="toolsTab">
+						<div id="paramsDiv">
+							<table>
+								<tr>
+									<td><input type="checkbox" checked="checked" 
+										onchange="toogleShowExcluded(this)">show excluded
+										points</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" id="canModifyCBX"
+										onchange="toogleRWmode(this)">can
+										modify</td>
+								</tr>
+
+
+								<tr>
+									<td>Move mode</td>
+
+								</tr>
+								<tr>
+									<td><input type="radio" name="moveModeR" id="CONFINED_R" checked="checked"
+										onchange="$(this).attr('checked', 'checked')?positionControMode ='CONFINED':positionControMode = 'CHANGE-ATTRS';">confined</td>
+								</tr>
+
+								<tr>
+									<td><input type="radio" name="moveModeR" 
+										id="CHANGE-ATTRS_R"
+										onchange="!$(this).attr('checked', 'checked')?positionControMode ='CONFINED':positionControMode = 'CHANGE-ATTRS';">open</td>
+								</tr>
+								
+
+								<tr>
+									<td><input type="button" value="get print image"
+										onclick='getPrintRadarImage();'></td>
+								</tr>
+								<tr>
+									<td><input type="button" value="Add item"
+										onclick='addItem();'></td>
+								</tr>
+								<tr>
+									<td>
+										<div id="radarAdmin">
+											<input type="button" id="initRadarRolesB" value="edit  roles"
+												onclick="initRadarRoles();"> <br> <input
+												type="checkbox" id="resetItemsCoordinates"
+												onclick="drawRadar()">reset points position
+										</div>
+									</td>
+
+								</tr>
+							
+
+								<tr>
+									<td><button onclick="generateSVG()">generateSVG</button></td>
+								</tr>
+
+
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			
+		</div>
+		<div id="center">
+		
+			<div id="radarDiv"></div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

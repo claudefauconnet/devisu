@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/jquery/jquery.js"></script>
+<script src="js/devisuProxy.js"></script>
+<script src="js/common.js"></script>
+<script src="js/useCases.js"></script>
+<script src="js/adminPOT_useCases.js"></script>
+
+<script src="js/d3/d3.js"></script>
+<script src="js/d3/d3.layout.cloud.js"></script>
+<script src="js/d3/tags.js"></script>
+
+<style>
+#cloudContainer {
+	width: 300px;
+	height: 300px;
+}
+
+#tab_tagCloud_filters table {
+	font: verdana, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	background-color: #dddddd;
+	padding: 5px;
+	width: 100%;
+}
+
+#tab_tagCloud_filters .title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#tabs-tagCloud {
+	font: verdana, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	height: 100%;
+}
+
+#tagCloud_links {
+	font: verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#tagCloud_iframe {
+	width: 960px;
+	height: 550px;
+	overflow: auto;
+}
+
+#breadcrumb {
+	font: verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: blue;
+	left: 50px;
+	width: 100%;
+	height: 30px;
+}
+
+#dateSlider {
+	width: 80%;
+	height: 30px;
+}
+
+#tagCloudHeader {
+	top: 10px;
+	width: 100%;
+	height: 60px;
+}
+
+#vis {
+	top: 80px;
+}
+
+.ui-tabs .ui-tabs-panel {
+	padding-left: 5px
+}
+
+ul {
+	padding-left: 20px;
+}
+
+a:link {
+	text-decoration: none;
+	color: #00F;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+</style>
+</head>
+<body>
+	<div id="stateDisplay"></div>
+	<div id="adminPOTduplicateRadar">
+		<B> Radar </B>
+
+		<table>
+			<tr>
+				<td>year</td>
+				<td>BU</td>
+				<td>BD</td>
+				<td>BC</td>
+
+
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><select id="adminPOTUseCasesYears" onchange="fillUsesCaseSelect(this)"></select></td>
+
+				<td><select id="adminPOTUseCasesBUs" onchange="fillUsesCaseSelect(this)"></select></td>
+
+				<td><select id="adminPOTUseCasesBDs" onchange="fillUsesCaseSelect(this)"></select></td>
+
+				<td><select id="adminPOTUseCasesBCs" onchange="fillUsesCaseSelect(this)"></select></td>
+				
+			
+			<tr>
+				query
+				<td colspan="4"><input id="adminPOTUseCasesQuery" size="70" value='{}'></td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick="adminPOTUseCasesGenerateFlatFileTechnos()">GenerateFlatFile technos</button>
+					<button onclick="adminPOTUseCasesGenerateFlatFileDCs()">GenerateFlatFile DCs</button>
+					
+					<button onclick="adminPOTUseCasesGenerateTagCloud()">GenerateTagCloud</button>
+					<button onclick="adminPOTUseCasesgenerateUseCasesPPTX()">getUseCasesPPTX</button>
+					<button onclick="adminPOTUseCasesGenerateUserTagCloud()">userTag Cloud</button>
+						<button onclick="replayCloud()">replay Cloud</button>
+					<button onclick="adminPOTUseCasesGenerateForR('dcs')">Dcs for R assocRules</button>
+					<button onclick="adminPOTUseCasesGenerateForR('technos')">Technos for R assocRules</button>
+				
+					
+				</td>
+			</tr>
+
+
+
+		</table>
+
+<a href="https://www.jasondavies.com/wordcloud/#%2F%2Fwww.jasondavies.com%2Fwordcloud%2Fabout%2F">cloud</a>
+
+	</div>
+	<!-- div id="cloudContainer"> -->
+		<div id="vis"></div>
+		<script type="text/javascript" src="js/d3/word-cloud2.js"></script>
+	<!--  </div> -->
+	<div>
+	<textarea rows="30" cols="150" id="adminPOTUseCasesFlatResult"></textarea>
+	</div>
+
+
+</body>
+</html>

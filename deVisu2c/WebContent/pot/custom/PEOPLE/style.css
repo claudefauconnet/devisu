@@ -1,0 +1,129 @@
+@CHARSET "ISO-8859-1";
+/***********************common dont touch*********/
+
+
+textarea {
+	overflow: scroll;
+}
+
+#menu {
+	border-width: thin;
+	border-style: solid;
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	top: 0px;
+	left: 0px;
+	width: 1000px;
+	height:30px;
+	background-color: #FF9966;
+}
+
+#content {
+	border-width: thin;
+	border-style: solid;
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	top: 30px;
+	left: 0px;
+	width: 1000px;
+	height: 600px;
+	background-color: #CCFF99;
+;
+}
+
+.label {
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: bold;
+	color: black;
+	text-align: right;
+}
+
+.field {
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	color: green;
+	border-width: thin;
+	border-style: dotted;
+	text-align: left;
+	background-color: #eee
+}
+
+/***********************custom*********/
+#label_firstName {
+   top:5px;
+   left:6px;
+   width:100px;
+   height:20px;
+}
+
+#field_firstName {
+   top:5px;
+   left:119px;
+   width:150px;
+   height:20px;
+}
+
+#label_lastName {
+   top:5px;
+   left:284px;
+   width:100px;
+   height:20px;
+}
+
+#field_lastName {
+   top:7px;
+   left:394px;
+   width:150px;
+   height:20px;
+}
+
+#label_role {
+   top:36px;
+   left:6px;
+   width:100px;
+   height:20px;
+}
+
+#field_role {
+   top:34px;
+   left:119px;
+   width:150px;
+   height:20px;
+}
+
+#label_radar {
+   top:32px;
+   left:284px;
+   width:100px;
+   height:20px;
+}
+
+#field_radar {
+   top:35px;
+   left:394px;
+   width:150px;
+   height:20px;
+}
+
+#label_password {
+   top:72px;
+   left:6px;
+   width:100px;
+   height:20px;
+}
+
+#field_password {
+   top:71px;
+   left:119px;
+   width:150px;
+   height:20px;
+}
+

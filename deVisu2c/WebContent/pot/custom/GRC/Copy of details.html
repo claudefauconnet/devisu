@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="print" type="text/css" title="Design" href="style.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="style.css" />
+<script src="../../js/browser.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/details.js"></script>
+<script src="../../js/radarXml.js"></script>
+<script src="../../js/tinymce/tinymce.min.js"></script>
+
+
+<script>
+window.onload = function() {
+	init();
+}
+
+</script>
+</head>
+<body>
+<div id="menu">
+<input type="button" value="X" id="bClose"  onclick="hidePopup();">
+<input type="button" value="modify" id="bModifyMode"style="visibility:hidden" onclick="setModifyMode();">
+<input type="button" value="save" id="bSave" style="visibility:hidden" onclick="saveItem();">
+<input type="button" value="cancel" id="bCancel"  style="visibility:hidden" onclick="setReadMode();">
+<div id="stateDisplay">---</div>
+</div>
+<div id="content">
+
+<form name="detailsForm">
+
+<div id='label_domaine' class='label_domaine'>domaine</div>
+<div class='field' id='field_domaine'>domaine</div>
+<div id='label_projet' class='label_projet'>projet</div>
+<div class='field' id='field_projet'>projet</div>
+<div id='label_definition' class='label_definition'>definition</div>
+<div class='field' id='field_definition'>definition</div>
+<div id='label_uses' class='label_uses'>uses</div>
+<div class='field' id='field_uses'>uses</div>
+<div id='label_volet' class='label_volet'>volet</div>
+<div class='field' id='field_volet'>volet</div>
+<div id='label_action_' class='label_action_'>action</div>
+<div class='field' id='field_action_'>action</div>
+<div id='label_external_ressources' class='label_external_ressources'>external ressources</div>
+<div class='field' id='field_external_ressources'>external ressources</div>
+<div id='label_internal_ressources' class='label_internal_ressources'>internal ressources</div>
+<div class='field' id='field_internal_ressources'>internal ressources</div>
+<div id='label_deliverable' class='label_deliverable'>deliverable</div>
+<div class='field' id='field_deliverable'>deliverable</div>
+<div id='label_champion' class='label_champion'>champion</div>
+<div class='field' id='field_champion'>champion</div>
+<div id='label_competitors' class='label_competitors'>competitors</div>
+<div class='field' id='field_competitors'>competitors</div>
+<div id='label_partners' class='label_partners'>partners</div>
+<div class='field' id='field_partners'>partners</div>
+<div id='label_academia' class='label_academia'>academia</div>
+<div class='field' id='field_academia'>academia</div>
+<div id='label_impact' class='label_impact'>impact</div>
+<div class='field' id='field_impact'>impact</div>
+
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<radars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://purl.org/dc/terms/ radar.xsd ">
+	<radar multiValuedFieldSep="," name="POD">
+
+		<field mandatory="true" name="id" radarRole="id" type="id" />
+		<field mandatory="true" name="x" radarRole="x" type="number" />
+		<field mandatory="true" name="y" radarRole="y" type="number" />
+		<field name="bu" isFilter="true">
+			<field name="year" isFilter="true" />
+			<field name="version" isFilter="true" />
+
+			<field name="type" isFilter="true" />
+			<field name="level" isFilter="true" />
+		
+
+			<field name="techno" radarRole="label" isFilter="true" />
+			<field name="domain" isFilter="true" />
+
+			<field name="availability" radarRole="horizontalAxis" isFilter="true" />
+			<field name="businessValue" radarRole="radialAxis" isFilter="true" />
+
+
+			<field name="maturity" radarRole="color">
+				<enum color="#eee" label="no interet" />
+				<enum color="#C70821" label="emerging" />
+				<enum color="#FCAB08" label="adolescent" />
+				<enum color="#2C9E03" label="first rollout" />
+				<enum color="#7A7087" label="mainstream" />
+			</field>
+			<field name="priority" radarRole="size">
+				<enum label="low" size="6" />
+				<enum label="medium" size="10" />
+				<enum label="high" size="14" />
+			</field>
+
+			<field name="type" radarRole="shape">
+				<enum label="practice" shape="square" />
+				<enum label="technology" shape="circle" />
+			</field>
+
+			<!-- <field isMultivalued="true" name="Domaine" isFilter="true"/> <field 
+				isMultivalued="true" name="activity" isFilter="true"/> -->
+
+		</field>
+		
+			<field name="excluded" radarRole="other" />
+
+		<background xmlns="http://purl.org/dc/terms/" start-color="#C9B5FF"
+			end-color="#F0F7FF" number-horizontal-steps="3" number-radial-steps="3"
+			type="radial" order-horizontal-steps="ascendant" order-radial-steps="ascendant" />
+		<foreignKey>detail_id</foreignKey>
+	</radar>
+
+
+	<radar multiValuedFieldSep="," name="POTuseCases">
+
+		<field mandatory="true" name="id" radarRole="id" type="id" />
+		<field mandatory="true" name="x" radarRole="x" type="number" />
+		<field mandatory="true" name="y" radarRole="y" type="number" />
+		<field name="bu" isFilter="true">
+			<field name="year" isFilter="true" />
+			<field name="BD" isFilter="true" />
+			<field name="BC" isFilter="true" />
+
+
+			<field name="name" radarRole="label" isFilter="true" />
+
+
+			<field name="maturity" radarRole="horizontalAxis" isFilter="true" />
+			<field name="value" radarRole="radialAxis" isFilter="true" />
+
+
+		<field name="impact" radarRole="color">
+				<enum color="#7A7087" label="traditionnal" />
+				<enum color="#C70821" label="disruptive" />
+				<enum color="#FCAB08" label="transformationnal" />
+				
+			</field>
+			
+				<!--<field name="impact" radarRole="color">
+				<enum color="#0000ee" label="traditionnal" />
+				<enum color="#277554" label="disruptive" />
+				<enum color="#FCAB08" label="transformationnal" />
+				
+			</field>-->
+			
+			<field name="maturity" radarRole="size">
+				<enum label="emerging" size="6" />
+				<enum label="adolescent" size="10" />
+				<enum label="first rollout" size="14" />
+				<enum label="mainstream" size="18" />
+			</field>
+			
+
+
+			<!-- <field isMultivalued="true" name="Domaine" isFilter="true"/> <field 
+				isMultivalued="true" name="activity" isFilter="true"/> -->
+
+		</field>
+
+		<background xmlns="http://purl.org/dc/terms/" start-color="#C9B5FF"
+			end-color="#F0F7FF" number-horizontal-steps="3" number-radial-steps="3"
+			type="radial" order-horizontal-steps="ascendant" order-radial-steps="ascendant" />
+		<foreignKey>detail_id</foreignKey>
+	</radar>
+</radars>

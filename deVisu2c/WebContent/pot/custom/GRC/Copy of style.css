@@ -1,0 +1,255 @@
+@CHARSET "ISO-8859-1";
+/***********************common dont touch*********/
+
+
+textarea {
+	overflow: scroll;
+}
+
+#menu {
+	border-width: thin;
+	border-style: solid;
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	top: 0px;
+	left: 0px;
+	width: 1000px;
+	height:30px;
+	background-color: #FF9966;
+}
+
+#content {
+	border-width: thin;
+	border-style: solid;
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	top: 30px;
+	left: 0px;
+	width: 1000px;
+	height: 600px;
+	background-color: #CCFF99;
+;
+}
+
+.label {
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: bold;
+	color: black;
+	text-align: right;
+}
+
+.field {
+	position: absolute;
+	font-size: 14px;
+	font-family: verdana, sans-serif;
+	font-weight: normal;
+	color: green;
+	border-width: thin;
+	border-style: dotted;
+	text-align: left;
+	background-color: #eee
+}
+
+/***********************custom*********/
+#label_domaine {
+top:12px;
+   left:20px;
+   width:74px;
+   height:20px
+}
+
+#field_domaine {
+top:12px;
+   left:97px;
+   width:150px;
+   height:21px
+}
+
+#label_projet {
+top:14px;
+   left:264px;
+   width:63px;
+   height:20px
+}
+
+#field_projet {
+top:14px;
+   left:331px;
+   width:150px;
+   height:20px
+}
+
+#label_definition {
+top:52px;
+   left:116px;
+   width:79px;
+   height:19px
+}
+
+#field_definition {
+top:77px;
+   left:14px;
+   width:307px;
+   height:246px
+}
+
+#label_uses {
+top:334px;
+   left:130px;
+   width:47px;
+   height:21px
+}
+
+#field_uses {
+top:364px;
+   left:17px;
+   width:306px;
+   height:224px
+}
+
+#label_volet {
+top:13px;
+   left:511px;
+   width:46px;
+   height:21px
+}
+
+#field_volet {
+top:14px;
+   left:559px;
+   width:150px;
+   height:20px
+}
+
+#label_action_ {
+top:15px;
+   left:728px;
+   width:52px;
+   height:20px
+}
+
+#field_action_ {
+top:14px;
+   left:789px;
+   width:194px;
+   height:23px
+}
+
+#label_external_ressources {
+top:50px;
+   left:419px;
+   width:183px;
+   height:24px
+}
+
+#field_external_ressources {
+top:85px;
+   left:352px;
+   width:293px;
+   height:226px
+}
+
+#label_internal_ressources {
+top:333px;
+   left:407px;
+   width:150px;
+   height:20px
+}
+
+#field_internal_ressources {
+top:367px;
+   left:352px;
+   width:299px;
+   height:224px
+}
+
+#label_deliverable {
+top:55px;
+   left:684px;
+   width:88px;
+   height:20px
+}
+
+#field_deliverable {
+top:52px;
+   left:778px;
+   width:206px;
+   height:24px
+}
+
+#label_champion {
+top:90px;
+   left:688px;
+   width:84px;
+   height:20px
+}
+
+#field_champion {
+top:91px;
+   left:776px;
+   width:206px;
+   height:20px
+}
+
+#label_competitors {
+top:153px;
+   left:767px;
+   width:95px;
+   height:21px
+}
+
+#field_competitors {
+top:178px;
+   left:694px;
+   width:268px;
+   height:90px
+}
+
+#label_partners {
+top:277px;
+   left:787px;
+   width:74px;
+   height:21px
+}
+
+#field_partners {
+top:310px;
+   left:692px;
+   width:273px;
+   height:149px
+}
+
+#label_academia {
+top:467px;
+   left:794px;
+   width:81px;
+   height:20px
+}
+
+#field_academia {
+top:494px;
+   left:694px;
+   width:272px;
+   height:95px
+}
+
+#label_impact {
+top:121px;
+   left:685px;
+   width:86px;
+   height:25px
+}
+
+#field_impact {
+top:121px;
+   left:774px;
+   width:211px;
+   height:23px
+}
+

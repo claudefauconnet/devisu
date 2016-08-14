@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:dcmitype="http://purl.org/dc/dcmitype/"
+           targetNamespace="http://purl.org/dc/terms/"
+           xmlns="http://purl.org/dc/terms/"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+           
+      <!--     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/03/xml.xsd">
+  </xs:import>
+
+   <xs:import namespace="http://purl.org/dc/elements/1.1/"
+              schemaLocation="dc.xsd"/>
+
+   <xs:import namespace="http://purl.org/dc/dcmitype/"
+              schemaLocation="dcmitype.xsd"/>
+              -->          
+	<xs:element name="acls" type="_acls" />
+
+	<xs:complexType name="_acls">
+		<xs:sequence>
+			<xs:element type="_groups" name="groups" minOccurs="1" maxOccurs="unbounded" />
+			<xs:element type="_users" name="users" minOccurs="0" maxOccurs="unbounded" />
+			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="_groups">
+		<xs:sequence>
+			<xs:element type="_group" name="group" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+<xs:complexType name="_users" >
+		<xs:sequence>
+			<xs:element type="_user" name="user" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+
+	<xs:complexType name="_group" mixed="true">	
+		<xs:sequence>
+			<xs:element type="xs:string" name="dbName" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>	
+		<xs:attribute type="xs:string" name="name" use="required"></xs:attribute>
+		<xs:attribute type="_roleType" name="role" use="optional"></xs:attribute>
+	</xs:complexType>
+
+
+<xs:complexType name="_user" >
+		<xs:attribute type="xs:string" name="firstName" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="lastName" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="login" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="entity" use="required"></xs:attribute>
+		<xs:attribute type="xs:string" name="password" use="required"></xs:attribute>
+	</xs:complexType>
+	
+
+<xs:simpleType name="_roleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none" />
+			<xs:enumeration value="read" />
+			<xs:enumeration value="write" />
+			<xs:enumeration value="admin" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	
+
+	
+
+</xs:schema>

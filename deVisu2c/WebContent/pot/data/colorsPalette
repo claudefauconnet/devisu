@@ -1,0 +1,23 @@
+http://colorschemedesigner.com/
+
+#800053	violet foncé		'#800053',
+#E238A7	violet clair		'#E238A7',
+#120873	bleu foncé		'#120873',
+#7B72D8	bleu clair		'#7B72D8',
+#006B53	bleu vert fonce		'#006B53',
+#34D2AF	bleu vert clair		'#34D2AF',
+#329000	vert foncé		'#329000',
+#4DDE00	vert clair		'#4DDE00',
+#FFD440	jaune foncé		'#FFD440',
+#FFE073	jaune clair		'#FFE073',
+#FE7276	rose		'#FE7276',
+#EC0033	rouge clair		'#EC0033',
+#990021	rouge foncé		'#990021',
+BF6730	marron clair		'BF6730',
+A63F00	marron foncé		'A63F00'
+
+
+var paletteComplete15=['#800053','#E238A7','#120873','#7B72D8','#006B53','#34D2AF','#329000','#4DDE00','#FFD440','#FFE073','#FFE073','#EC0033','#990021','BF6730','A63F00'];
+var palette8couleurs=['#800053','#120873','#7B72D8','#006B53','#34D2AF','#4DDE00','#FFE073','#990021'];
+var palette5couleurs=['#7B72D8','#4DDE00','#FFE073','#EC0033','#990021'];
+

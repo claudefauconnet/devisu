@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="print" type="text/css" title="Design" href="style.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="style.css" />
+<script src="../../js/browser.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/details.js"></script>
+<script src="../../js/radarXml.js"></script>
+<script src="../../js/tinymce/tinymce.min.js"></script>
+
+
+<script>
+window.onload = function() {
+	init();
+}
+
+</script>
+</head>
+<body>
+<div id="menu">
+<input type="button" value="X" id="bClose"  onclick="hidePopup();">
+<input type="button" value="modify" id="bModifyMode"style="visibility:hidden" onclick="setModifyMode();">
+<input type="button" value="save" id="bSave" style="visibility:hidden" onclick="saveItem();">
+<input type="button" value="cancel" id="bCancel"  style="visibility:hidden" onclick="setReadMode();">
+<input type="button" value="delete" id="bDelete" style="visibility:hidden" onclick="deleteItem();">
+<div id="stateDisplay">---</div>
+</div>
+<div id="content">
+
+<form name="detailsForm">
+
+<div class='label domaine' id='label_domaine'>domaine</div>
+<div class='field' id='field_domaine'>domaine</div>
+<div class='label projet' id='label_projet'>projet</div>
+<div class='field' id='field_projet'>projet</div>
+<div class='label definition' id='label_definition'>definition</div>
+<div class='field' id='field_definition'>definition</div>
+<div class='label uses' id='label_uses'>uses</div>
+<div class='field' id='field_uses'>uses</div>
+<div class='label volet' id='label_volet'>volet</div>
+<div class='field' id='field_volet'>volet</div>
+<div class='label action_' id='label_action_'>action</div>
+<div class='label external_ressources' id='label_external_ressources'>external_ressources</div>
+<div class='field' id='field_external_ressources'>external_ressources</div>
+<div class='label internal_ressources' id='label_internal_ressources'>internal_ressources</div>
+<div class='field' id='field_internal_ressources'>internal_ressources</div>
+<div class='label deliverable' id='label_deliverable'>deliverable</div>
+<div class='field' id='field_deliverable'>deliverable</div>
+<div class='label champion' id='label_champion'>champion</div>
+<div class='field' id='field_champion'>champion</div>
+<div class='label competitors' id='label_competitors'>competitors</div>
+<div class='field' id='field_competitors'>competitors</div>
+<div class='label partners' id='label_partners'>partners</div>
+<div class='field' id='field_partners'>partners</div>
+<div class='label academia' id='label_academia'>academia</div>
+<div class='field' id='field_academia'>academia</div>
+<div class='label impact' id='label_impact'>impact</div>
+<div class='field' id='field_impact'>impact</div>
+<div class='field' id='field_name'>name</div>
+<div class='label year' id='label_year'>year</div>
+<div class='field' id='field_year'>year</div>
+<div class='label TRL' id='label_TRL'>TRL</div>
+<div class='field' id='field_TRL'>TRL</div>
+<div class='label availability' id='label_availability'>availability</div>
+<div class='field' id='field_availability'>availability</div>
+<div class='label priority' id='label_priority'>priority</div>
+<div class='field' id='field_priority'>priority</div>
+
+
+</form>
+</div>
+
+</body>
+</html>

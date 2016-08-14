@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="print" type="text/css" title="Design" href="style.css" />
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="style.css" />
+<script src="../../js/browser.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/details.js"></script>
+<script src="../../js/common.js"></script>
+
+
+<script>
+window.onload = function() {
+	loadDivsData();
+}
+
+</script>
+
+<style>
+
+.label{
+position:absolute;
+font-size: 24px;
+	font-family: serif;
+	font-weight: bold;
+	color:grey
+}
+.field{
+position:absolute;
+font-size:18px;
+	font-family: serif;
+	font-weight: bold;
+	color:green;
+	border-width: thin;
+	border-style: dotted;
+}
+
+
+.label.definition{top:80px;
+   left:184px;
+   width:91px;
+   height:20px
+}
+
+#field_definition{top:77px;
+   left:281px;
+   width:241px;
+   height:193px
+}
+
+.label.uses{top:314px;
+   left:223px;
+   width:43px;
+   height:20px
+   }
+
+#field_uses{top:308px;
+   left:280px;
+   width:241px;
+   height:188px
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+<div id="stateDisplay"></div>
+<form name="detailsForm">
+<!-- Insert custom divs here with id preffix=field_ -->
+
+<span class='label definition'>definition</span>
+<div class='field' id='field_definition'></div>
+<span class='label uses'>uses</span>
+<div class='field' id='field_uses'></div>
+
+
+
+
+<!--  end insert -->
+
+</form>
+
+</body>
+</html>
