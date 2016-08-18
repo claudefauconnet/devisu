@@ -8,6 +8,7 @@ body { overflow:auto;
 	font-size: 14px;
 	font-family: sans-serif, verdana;
 	vertical-align: top;
+ height: 1000px;
 }
 
 #tabs-radarLeft{
@@ -16,14 +17,12 @@ body { overflow:auto;
 }
 #main{
 	left: 5px;
-	top:5px;
-	position: absolute;
-	
+
 	
 }
 
 #center{
-	width: 1000px;
+	width: 100%;
 	height: 100%;
 	
 	
@@ -46,7 +45,7 @@ body { overflow:auto;
 
 #attrsIframe {
 	width: 450px;
-	height: 500px;
+	//height: 500px;
 	
 }
 
@@ -72,6 +71,13 @@ body { overflow:auto;
     color:#b18527;
    
    
+}
+#graphDiv {
+	visibility: visible;
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+	background-color: #eee;
 }
 #stateDisplay{
 	visibility: visible;
@@ -104,9 +110,8 @@ body {db /data/transaction/commit overflow:auto;
 
 #bottomPanel {
 	width: 100%;
-	top: 100px;
-	position: absolute;
-	height: calc(100% - 200px);
+
+	height: 100%;
 	background-color: #fff;
 	overflow: none;
 	border-color: #eee;
@@ -119,30 +124,24 @@ body {db /data/transaction/commit overflow:auto;
 	border: thin;
 	border-color: #eee;
 	border-style: solid;
-	position: relative;
-	top: 0px;
-	height: calc(100% - 200px);
-	height: 400px;
+	height: 100%;
 	overflow: auto;
-	width: calc(100% - 350px);
-	width: 200px;
+	width: 100%;
 }
 
 #spreadSheetDiv {
-	position: absolute;
 	visibility: hidden;
-	top: 120px;
 	overflow: auto;
 	width: 100%;
-	height: 510px;
+	height: 100%;
 	background-color: #ddd;
 }
 
 #graphContainerDiv {
 	background-color: #eee;
 	overflow: auto;
-	width: 550px;
-	height: 550px;
+	//width: 550px;
+	//height: 550px;
 	border-style: solid;
 	border-color: blue;
 	border-width: 1px;
@@ -178,7 +177,7 @@ body {db /data/transaction/commit overflow:auto;
 	background-color: #fff;
 	margin: 10px;
 	padding: 5px;
-	height: 400px;
+	//height: 400px;
 	overflow: auto;
 }
 
@@ -186,7 +185,7 @@ body {db /data/transaction/commit overflow:auto;
 	background-color: #eee;
 	margin: 10px;
 	padding: 10px;
-	height: 250px;
+//	height: 250px;
 	width: 400px;
 	overflow: auto;
 	border-style: solid;
@@ -206,9 +205,7 @@ body {db /data/transaction/commit overflow:auto;
 	margin: 5px;
 }
 
-.fill0ScreenHeight {
-	height: calc(100% - 300px);
-}
+
 
 #outputModeHome {
 	ddd visibility: visible;
@@ -288,6 +285,15 @@ a:link, a:visited .chronoSheet {
 #currentNodeSpan {
 	color: blue;
 }
+
+#graphLegendDiv{
+	
+	width: 400px;
+	//height: 600px;
+	
+}
+
+
 
 /*********************** force Collapse******************/
 circle.node {

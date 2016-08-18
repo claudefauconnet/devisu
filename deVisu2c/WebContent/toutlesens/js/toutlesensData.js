@@ -1,3 +1,5 @@
+function toutlsensDataClass(){
+
 var excludeLabels = {};
 var cachedResultArray;
 var cachedResultArray2;
@@ -184,7 +186,8 @@ function deleteRecursiveReferences(nodesMap){
 		console.log( nodesMap[parent].parent+"  "+nodesMap[key].id)
 		
 		if(nodesMap[parent] && nodesMap[parent].parent==nodesMap[key].id){
-			//if(nodesMap[key].parent!=rootId)// on ne detruit pas les noeud centraux
+			// if(nodesMap[key].parent!=rootId)// on ne detruit pas les noeud
+			// centraux
 				idsToDelete.push(nodesMap[key].id);
 			}
 		
@@ -218,6 +221,7 @@ function addChildRecursive(node, nodesMap, level) {
 		console.log(e);
 	}
 
+}
 }
 
 

@@ -1,5 +1,7 @@
 http://stackoverflow.com/questions/21473308/integrating-eclipse-and-github
 http://www.vogella.com/tutorials/EclipseGit/article.html
+https://wiki.eclipse.org/EGit/User_Guide
+http://stackoverflow.com/questions/19474186/egit-rejected-non-fast-forward
 
-
-
+http://www.eclipse.org/downloads/download.php?file=/egit/updates/org.eclipse.egit.repository-4.4.1.201607150455-r.zip
+http://www.eclipse.org/egit/download/.

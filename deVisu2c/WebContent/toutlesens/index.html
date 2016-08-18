@@ -22,7 +22,7 @@
 <script src="js/jsTree/jstree.min.js"></script>
 
 <script src="js/common.js"></script>
-<script src="js/toutlesens.js"></script>
+<script src="js/toutlesensOld.js"></script>
 <script src="js/d3/d3.js"></script>
 <script src="js/forceGraphClass.js"></script>
 <script src="js/dndTreeClassV2.js"></script>
@@ -41,14 +41,24 @@
 <script>
 	processDataBeforeDrawingCallback = null;
 	$(function() {
+		var totalWidth=$(window).width();
+		var totalHeight=$(window).height();
+
+		$("#left").width(totalWidth/4).height(totalHeight-10);
+		$("#radarDiv").width(totalWidth/4*3).height(totalHeight-10);
+		$("#center").width(totalWidth/4*3).height(totalHeight-10);
+		$(".splitter_panel").width(totalWidth/4*3).height(totalHeight-10);
+		
+	
 		$('#main').width("100%").height("100%").split({
 			orientation : 'vertical',
 			limit : 100,
-			position : "410px"
+			position : totalWidth/4
 		});
 
 		$("#tabs-radarLeft").tabs();
-		$("#radarDiv").width(860).height(560);
+		
+	
 
 		var queryParams = getQueryParams(document.location.search);
 		var radarModelName = queryParams.radarModelName;
@@ -84,7 +94,7 @@
 						<li><a href="#toolsTab">Tools</a></li>
 					</ul>
 					<div id="legendTab">
-						<div id="legend"></div>
+						<div id="graphLegendDiv"></div>
 					</div>
 
 
@@ -180,17 +190,17 @@
 						<span id="modifyPalette">
 							<button onclick="onShowInputMode()">Modif.</button>
 						</span>
-							<div id="modifyControls">
-									Noeud
-									<button id="ModifyNodeButton" onclick="onModifyNodeButton()">Modifier</button>
-									-
-									<button id="copyNodeButton" onclick="onCopyNodeButton()">Copier
-									</button>
-									<span id="currentNodeSpan"></span>
-									<button id="linkNodeButton" onclick="onLinkNodeButton()">Lier...
-									</button>
+						<div id="modifyControls">
+							Noeud
+							<button id="ModifyNodeButton" onclick="onModifyNodeButton()">Modifier</button>
+							-
+							<button id="copyNodeButton" onclick="onCopyNodeButton()">Copier
+							</button>
+							<span id="currentNodeSpan"></span>
+							<button id="linkNodeButton" onclick="onLinkNodeButton()">Lier...
+							</button>
 
-								</div>
+						</div>
 					</div>
 
 					<!--  ****************************************************attrs***************************-->
@@ -203,15 +213,16 @@
 								<tr>
 									<td valign="top">
 
-										<div id="infoPanel"></div> <td valign="top" rowspan="2" align="left">
-							<div id="chronoParams">
+										<div id="infoPanel"></div>
+									<td valign="top" rowspan="2" align="left">
+										<div id="chronoParams">
 
 
-								<div id="timeSlider"></div>
-								civilisation<select id="chronoCivilisationSelect"
+											<div id="timeSlider"></div>
+											civilisation<select id="chronoCivilisationSelect"
 												onchange="drawChronoChart()">
-									<option></option>
-								</select>&nbsp; <span id="eventTypes"> <input type="checkbox"
+												<option></option>
+											</select>&nbsp; <span id="eventTypes"> <input type="checkbox"
 												id="eventType" name="eventType" onchange="drawChronoChart()"
 												checked="checked" value="Personne">Personne <input
 												type="checkbox" id="eventType" name="eventType"
@@ -219,54 +230,54 @@
 												value="Evenement">Evenement <input type="checkbox"
 												id="eventType" name="eventType" onchange="drawChronoChart()"
 												checked="checked" value="Oeuvre">Oeuvre
-								</span> <span id="anchorZoomOutSpan"></span>
-
-							
+											</span> <span id="anchorZoomOutSpan"></span>
 
 
 
 
 
-							</div>
-
-						</td>
-
-					</tr>
-					<tr align="center">
-
-						<td valign="top">
-
-							<div id="imagePanel"></div>
-						</td>
 
 
-					</tr>
-					<tr align="left">
+										</div>
 
-						<td colspan="2">
-							<div class="breadcrumb">
-								<button onclick='$("#breadcrumb").html("")'>effacer</button>
-								&nbsp;&nbsp;<span id="breadcrumb"></span>
-							</div>
-						</td>
+									</td>
 
+								</tr>
+								<tr align="center">
 
-					</tr>
+									<td valign="top">
 
+										<div id="imagePanel"></div>
+									</td>
 
 
+								</tr>
+								<tr align="left">
+
+									<td colspan="2">
+										<div class="breadcrumb">
+											<button onclick='$("#breadcrumb").html("")'>effacer</button>
+											&nbsp;&nbsp;<span id="breadcrumb"></span>
+										</div>
+									</td>
 
 
-				</table>
+								</tr>
 
 
 
-			</div>
-		</div>
-		
-		
-		<!--  ****************************************************tools***************************-->
-				<div id="toolsTab">
+
+
+							</table>
+
+
+
+						</div>
+					</div>
+
+
+					<!--  ****************************************************tools***************************-->
+					<div id="toolsTab">
 						<div id="paramsDiv">
 							<table>
 								<tr>
@@ -275,24 +286,24 @@
 							</table>
 						</div>
 					</div>
-				
-									</div>
+
+				</div>
 			</div>
 		</div>
-		
-	
-		
-		
 
-		
-	</div>
-<!--  ****************************************************graph***************************-->
+
+
+		<!--  ****************************************************graph***************************-->
 
 		<div id="center">
 
 			<div id="graphDiv"></div>
 			<div id="popup"></div>
 		</div>
+
+
+	</div>
+
 
 
 </body>
