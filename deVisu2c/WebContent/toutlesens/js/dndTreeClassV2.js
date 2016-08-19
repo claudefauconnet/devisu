@@ -66,7 +66,7 @@ function D3Tree2(_graphDiv, _nodesData) {
 			treeData = buildTree(this);
 
 		$(graphDiv).html("");
-		d3.select("svg").selectAll("*").remove();
+		d3.select(".overlay").selectAll("*").remove();
 
 		// Calculate total nodes, max label length
 		var totalNodes = 0;
@@ -85,8 +85,8 @@ function D3Tree2(_graphDiv, _nodesData) {
 		// size of the diagram
 		// var viewerWidth = $(document).width()*0.8;
 		// var viewerHeight = $(document).height()-50;
-		viewerHeight = $(graphDiv).parent().width();
-		viewerWidth = $(graphDiv).parent().height();
+		viewerHeight = $(graphDiv).width();
+		viewerWidth = $(graphDiv).height();
 		var www = graphDiv.parentElement;
 		viewerWidth = $(www).width();
 		viewerHeight = $(www).height();
@@ -175,6 +175,8 @@ function D3Tree2(_graphDiv, _nodesData) {
 		function zoom() {
 			svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 		}
+		
+		
 
 		// define the zoomListener which calls the zoom function on the "zoom"
 		// event constrained within the scaleExtents
@@ -295,50 +297,8 @@ function D3Tree2(_graphDiv, _nodesData) {
 			node.attr("transform", "translate(" + d.y0 + "," + d.x0 + ")");
 			updateTempConnector();
 		}).on("dragend", function(d) {
-			if (d == root) {
-				return;
-			}
-			var e = d3.event;
-			if (e.ctrlKey) {
-				// eventFactory.showNodeInfo(d);
-				return;
-
-			}
-			domNode = this;
-			if (selectedNode) {
-				// now remove the element from the parent, and insert it into
-				// the new elements children
-				var index = draggingNode.parent.children.indexOf(draggingNode);
-				if (index > -1) {
-					draggingNode.parent.children.splice(index, 1);
-				}
-				if (typeof selectedNode.children !== 'undefined' || typeof selectedNode._children !== 'undefined') {
-					if (typeof selectedNode.children !== 'undefined') {
-						selectedNode.children.push(draggingNode);
-					} else {
-						selectedNode._children.push(draggingNode);
-					}
-				} else {
-					selectedNode.children = [];
-					selectedNode.children.push(draggingNode);
-
-					// ajout CF**************************
-					draggingNode.tg.splice(draggingNode.tg.indexOf(draggingNode.parent.name));
-					draggingNode.tg.push(selectedNode.name)
-					proxy_saveNode(draggingNode.parent);
-					proxy_saveNode(selectedNode);
-					proxy_saveNode(draggingNode);
-					// ajout CF**************************
-
-				}
-				// Make sure that the node being added to is expanded so user
-				// can see added node is correctly moved
-				expand(selectedNode);
-				sortTree();
-				endDrag();
-			} else {
-				endDrag();
-			}
+			return;
+		
 		});
 
 		function endDrag() {
@@ -458,26 +418,14 @@ function D3Tree2(_graphDiv, _nodesData) {
 			var e = d3.event;
 			hidePopup();
 			selectedNode = d3.select(this).datum();
-			var clone = $.extend(selectedNode, {});
-			var id=clone._id.substring(0,clone._id.indexOf("_"));
-			clone.id = id;
-			clone.label = clone.name;
-			clone.px = e.offsetX;
-			clone.py = e.offsetY;
+			
 			if (e.ctrlKey) {
-				/*hidePopup();
-				if(addToOldData)
-				treeSelectedNode=selectedNode;
-				else{
-					this.nextStartNode=null;
-				}
-				zoomGraphToSelectedNode(clone);
-				selectedNode.color = nodeColors[clone.type];
-				addToBreadcrumb(clone);*/
+				getNodeAllRelations(selectedNode.id,"tree",true,false);
+			
 			} else if (e.altKey) {
 				centerNode(d);
 			} else {
-				showInfos(clone);
+				getNodeAllRelations(selectedNode.id,"tree");
 				
 
 			}
@@ -570,7 +518,7 @@ function D3Tree2(_graphDiv, _nodesData) {
 			}).style("fill-opacity", 0);
 
 			// phantom node to give us mouseover in a radius around it
-			nodeEnter.append("circle").attr('class', 'ghostCircle').attr("r", 30).attr("opacity", 0.2) // change
+			nodeEnter.append("circle").attr('class', 'ghostCircle').attr("r",10).attr("opacity", 0.0) // change
 																										// this
 																										// to
 																										// zero
@@ -670,7 +618,7 @@ function D3Tree2(_graphDiv, _nodesData) {
 
 		// Append a group which holds all nodes and which the zoom Listener can
 		// act upon.
-		var svgGroup = baseSvg.append("g");
+		var svgGroup = baseSvg.append("g").attr("class","svgGroup");
 
 		// Define the root
 		root = treeData;
@@ -800,5 +748,18 @@ function D3Tree2(_graphDiv, _nodesData) {
 		var imgSrc = 'data:image/svg+xml;base64,' + btoa(html);
 		return imgSrc;
 
+	}
+	
+	this.setInitialDisplayPosition = function (x,y,scale){
+	
+		var x=100;
+		var y=0;
+		scale=1.3;
+		w= $("#graphDiv").parent().width() ;
+		h= $("#graphDiv").parent().height();
+		var xxx=d3.select('.svgGroup');
+		d3.select('.svgGroup').attr("transform", "translate(" + 200 + "," + (h/2) + ")scale(" + scale + ")");
+
+	//	d3.select('g').transition().duration(duration).attr("transform", "translate(" + 200 + "," + (h/2) + ")scale(" + scale + ")");
 	}
 }

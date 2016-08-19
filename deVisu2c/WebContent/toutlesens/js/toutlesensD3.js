@@ -1,4 +1,4 @@
-function toutlsensDataClass(){
+//function toutlsensD3(){
 var vis;
 var visLeg;
 var drag ;
@@ -13,18 +13,18 @@ function drawLegend() {
 		d3.select(".legendSVG").selectAll("*").remove();
 
 	}
-	var w=200;
-	var h=400;
+	var w= $("#graphLegendDiv").width() ;
+	var h= $("#graphLegendDiv").height();
 	
 	
 	visLeg = d3.select("#graphLegendDiv").append("svg:svg").attr("width", w).attr(
 			"height", h).attr("class", "legendSVG");
 	
 	var labels = new Array;
-	var x = 5;// 230;
+	var x = 100;// 230;
 	var y = 5;// 50;
 	var circleLegR = 6;
-	var legHeight = 10;
+	var legHeight = 40;
 	var legWidth = 100;
 	// $("#nodesLabelsSelect option").each(function() {
 
@@ -42,7 +42,8 @@ function drawLegend() {
 
 	}
 	for (label in legendNodeLabels) {
-		legHeight += 20;
+		//legHeight += 20;
+		legWidth += 100;
 		var obj = {
 			name : label,
 			x : x,
@@ -52,10 +53,10 @@ function drawLegend() {
 			excludeLabels[obj.name] = -1;
 		if (obj.name != "") {
 			labels.push(obj);
-			y += 20;
+			x += 100;
 		}
 	}
-
+//$("#graphLegendDiv").height(y);
 	var legend = visLeg.data([ {
 		x : 150,
 		y : 100
@@ -64,8 +65,8 @@ function drawLegend() {
 	}).attr("x",function (d){return d.x})
 	.attr("y",function (d){return d.y})
 	
-	legend.append("rect").attr("class", "legendRect").attr("x", -10).attr("y", -10).attr("width", legWidth)
-			.attr("height", legHeight).style("stroke", "black").style("fill",
+	legend.append("rect").attr("class", "legendRect").attr("x", 20).attr("y", -10).attr("width", legWidth)
+			.attr("height", legHeight).style("stroke", "black").style("stroke-widh", "1px").style("fill",
 					"#eee");
 
 	var legendElts = legend.selectAll("g").data(labels).enter().append("g")
@@ -160,8 +161,8 @@ function drawForceCollapse(json, _w, _h, _charge, _distance) {
 	// linkType="line"
 	var rootx = w / 2 / coef;
 	var w = 1280, h = 800;
-	w= $("#graphDiv").parent().width() ;
-	h= $("#graphDiv").parent().height();
+	w= $("#graphDiv").width() ;
+	h= $("#graphDiv").height();
 	
 	
 	
@@ -701,8 +702,8 @@ function zoomIn() {
 	$("#graphContainerDiv").css("width", "1200px");
 	var scrollLeft = ($("#graphDiv").parent().width() / 2) + 100;
 	var scrollTop = ($("#graphDiv").parent().height() / 2);
-	$("#graphDiv").parent().scrollLeft(scrollLeft);
-	$("#graphDiv").parent().scrollTop(scrollTop);
+//	$("#graphDiv").parent().scrollLeft(scrollLeft);
+//	$("#graphDiv").parent().scrollTop(scrollTop);
 	var json = toFlareJson(cachedResultArray)
 	var w = 1500, h = 1200, charge = -200, distance = 150;
 	drawForceCollapse(json, w, h, charge, distance);
@@ -733,6 +734,45 @@ function stack() {
 	var trace = printStackTrace();
 	console.log(trace.length());
 }
+
+
+
+
+
+
+
+
+/**********************************************Tree*****************************************************************************************************************
+********************************************************************************************************************************************************************
+********************************************************************************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************Tree*****************************************************************************************************************
+********************************************************************************************************************************************************************
+********************************************************************************************************************************************************************/
+
+
+
+
+
+
 
 /*******************************************************************************
  * spare code********************************************************
@@ -847,4 +887,4 @@ function drawTree(root){
 		d3tree = new D3Tree2($("#graphDiv"));
 	d3tree.drawTree(root);
 }
-}
+//}

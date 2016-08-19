@@ -2,7 +2,7 @@ body{
 	   font-family: verdana, sans-serif;
 	    background-color: #f3edef;
 	     background-color: #eee;
-	      background-color: white;
+	      background-color: #eee;
 }
 body { overflow:auto;
 	font-size: 14px;
@@ -14,6 +14,10 @@ body { overflow:auto;
 #tabs-radarLeft{
 	  font-size: 12px;
 	  font-weight: bold;
+	  width: 100%;
+	height: 100%;
+	  background-color: #eee;
+}
 }
 #main{
 	left: 5px;
@@ -24,14 +28,17 @@ body { overflow:auto;
 #center{
 	width: 100%;
 	height: 100%;
-	
+		overflow: hidden;
 	
 }
+
+
 
 
 #left{
 	width: 300px;
 	height: 100%;
+	overflow: hidden;
 	
 }
 
@@ -74,9 +81,11 @@ body { overflow:auto;
 }
 #graphDiv {
 	visibility: visible;
-	overflow: auto;
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
+//	top:200px;
+//	position:absolute;
 	background-color: #eee;
 }
 #stateDisplay{
@@ -103,7 +112,7 @@ body {db /data/transaction/commit overflow:auto;
 #topPanel {
 	width: 100%;
 	height: 100px;
-	background-color: #fff;
+	background-color: #eee;
 	overflow: none;
 	java-script background-color: #eed;
 }
@@ -181,17 +190,23 @@ body {db /data/transaction/commit overflow:auto;
 	overflow: auto;
 }
 
-#infoPanel {
+#infoPanel,#externalInfoPanel,#displayDiv{
 	background-color: #eee;
 	margin: 10px;
 	padding: 10px;
-//	height: 250px;
-	width: 400px;
+//width:300px;
+border-style: solid;
+	border-color: blue;
+	border-width: 1px;
 	overflow: auto;
 	border-style: solid;
 	border-color: blue;
-	border-width: 1px;
+	border-width: 1px; 
 	margin: 5px;
+}
+#externalInfoPanel{
+	max-height: 400px;
+	overflow: auto;
 }
 
 #imagePanel {
@@ -199,25 +214,38 @@ body {db /data/transaction/commit overflow:auto;
 	padding: 10px;
 	height: 250px;
 	overflow: auto;
-	border-style: solid;
+	border-style: hidden;
 	border-color: blue;
 	border-width: 1px;
 	margin: 5px;
+	text-align: center;
 }
 
+.title{
+	font-size: 18px;
+}
+
+.hidden{
+	visibility: hidden;
+}
 
 
 #outputModeHome {
-	ddd visibility: visible;
+	 visibility: visible;
 }
-
+	
 #wordsSelect, #nodesLabelsSelect, #word {
 	border-style: solid;
 	border-color: grey;
-	border-width: 2px;
+	border-width: 1px;
 	font-weight: bold;
 	font-size: 14px;
 	width: 150px;
+}
+#wordsSelect{
+		border-style: solid;
+	border-color: blue;
+	border-width: 1px; 
 }
 
 .breadcrumb {
@@ -318,5 +346,10 @@ line.link {
 	fill: none;
 	stroke: #ccc;
 	stroke-width: 1px;
+}
+
+
+.inputFieldNode{
+	width: 400px;
 }
 

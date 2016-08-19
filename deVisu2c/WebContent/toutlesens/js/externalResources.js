@@ -29,7 +29,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  */
 
 
-var externalResourcesOn=false;
+var externalResourcesOn=true;
 function getDbpediaInfo(word) {
 
 	executeRestQuery("restapi", getDbpediaInfoCallback);
@@ -94,7 +94,7 @@ function getDbpediaInfoCallback(result) {
 		function getDbpediaInfoCallback(result) {
 		}
 		// var strOld = $("#infoPanel").html();
-		$("#infoPanel").html(+strOldstr);
+		$("#externalInfoPanel").html(+strOldstr);
 	}
 }
 
@@ -344,8 +344,8 @@ function getDbPediaNotice(obj) {
 
 						if (strImage)
 							$("#imagePanel").html(strImage);
-						var oldHtml = $("#infoPanel").html();
-						$("#infoPanel").html(oldHtml + str);
+					//	var oldHtml = $("#infoPanel").html();
+						$("#externalInfoPanel").html( str);
 
 					}
 

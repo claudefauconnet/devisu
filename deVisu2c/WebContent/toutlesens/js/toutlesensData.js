@@ -1,4 +1,4 @@
-function toutlsensDataClass(){
+//function toutlsensDataClass(){
 
 var excludeLabels = {};
 var cachedResultArray;
@@ -12,6 +12,8 @@ var legendRelTypes = {};
 
 
 function getNodeAllRelations(id,output,addToExistingTree,cacheNewResult) {
+	 legendNodeLabels = {}
+	 legendRelTypes = {};
 	var subGraphWhere = ""
 	if (subGraph)
 		subGraphWhere = " and node1.subGraph=\"" + subGraph + "\" "
@@ -66,11 +68,15 @@ function getNodeAllRelations(id,output,addToExistingTree,cacheNewResult) {
 			var json = toFlareJson(resultArray,addToExistingTree);
 			
 			if(output && output=="tree"){
-				drawTree(json);
-				return
+				if (!d3tree)
+					d3tree = new D3Tree2($("#graphDiv"));
+				d3tree.drawTree(json);
+				d3tree.setInitialDisplayPosition();
 			}
-			else
-			drawForceCollapse(json);
+			else{
+				drawForceCollapse(json);
+			}
+			drawLegend();
 			var scrollLeft = ($("#graphDiv").parent().width() / 2) + 100;
 			var scrollTop = ($("#graphDiv").parent().height() / 2) - 100;
 			$("#graphDiv").parent().scrollLeft(scrollLeft);
@@ -171,7 +177,7 @@ function toFlareJson(resultArray,addToExistingTree) {
 	var root = nodesMap.root;
 	root.isRoot = true;
 	addChildRecursive(root, nodesMap, 1);
-	drawLegend();
+	
 	
 	// console.log (JSON.stringify(root));
 	return root;
@@ -222,6 +228,126 @@ function addChildRecursive(node, nodesMap, level) {
 	}
 
 }
+
+/**********************************************Tree*****************************************************************************************************************
+********************************************************************************************************************************************************************
+********************************************************************************************************************************************************************/
+function prepareTreeData(neoResult) {
+	$("#spreadSheetDiv").css("visibility", "hidden");
+	showInfosCallback(neoResult);
+	var nameLength = 30;
+	var data = neoResult[0].data;
+	var variables = neoResult[0].columns;
+
+	if (variables.length < 2)
+		return;
+
+	var nodes = {};
+	setMessage(data.length + " rows retrieved", green);
+	var distinctParentNodes = {};
+	var parentsVar = 0;
+	if (currentVariable)
+		parentsVar = variables.indexOf(currentVariable);
+	// selection des noeuds parents
+	for (var i = 0; i < data.length; i++) {
+		var row = data[i].row;
+		var obj = row[parentsVar];
+		if (!distinctParentNodes[obj.id]) {
+			distinctParentNodes[obj.id] = {
+				_id : obj.id + "_" + treeLevel,
+				name : obj.name,// + " " + obj.id + "_" + treeLevel,
+				type : obj.type,
+				children : []
+			};
+		}
+	}
+	// remplissages des enfants
+
+	var childrenVar = [];
+	for (var i = 0; i < variables.length; i++) {
+		if (variables[i] != parentsVar)
+			childrenVar.push(i)
+	}
+	;
+
+	for ( var key in distinctParentNodes) {
+
+		var index = 0;
+		for (var i = 0; i < data.length; i++) {
+			var row = data[i].row;
+			var obj = row[parentsVar];
+			if (key == "" + obj.id) {
+				// var childObj = row[childrenVar[0]];
+				var childObj = row[1];
+				distinctParentNodes[key].children.push({
+					_id : childObj.id + "_" + treeLevel,
+					name : childObj.name,// + " " + childObj.id + "_"+
+					// treeLevel,
+					type : childObj.type,
+					children : []
+				})
+			}
+		}
+	}
+	var root = {};
+	if (oldTreeRootNode && treeSelectedNode) {
+		root = oldTreeRootNode;
+		var id = treeSelectedNode.id;
+
+		treeSelectedNode = null;
+		root2 = findNodeInTree(id, oldTreeRootNode);
+		if (!root2)
+			return;
+		if (root2 && root2.children)
+			return;
+		root2.children = [];
+		var key2;
+		for ( var key in distinctParentNodes) {
+			for (var i = 0; i < distinctParentNodes[key].children.length; i++) {// on
+				// ajoute
+				// les
+				// nouveaux
+				// noeuds
+				// à
+				// l'ancien
+				// arbre
+				var newChild = distinctParentNodes[key].children[i];
+				var p = newChild._id.indexOf("_");
+
+				var newId = newChild._id.substring(0, p);
+				var oldChild = findNodeInTree(newId, oldTreeRootNode);
+				if (oldChild) {// si le noeud existe déjà on ne l'ajoute pas
+					;// console.log(JSON.stringify(oldChild));
+					continue;
+				}
+
+				root2.children.push(newChild);
+			}
+		}
+
+		root = oldTreeRootNode;
+
+	} else {
+		/*
+		 * var root = {
+		 * 
+		 * id : -1, isRoot : true, name : "..", // name : "-" + currentVariable,
+		 * children : [] } for ( var key in distinctParentNodes) {
+		 * 
+		 * root.children.push(distinctParentNodes[key]); }
+		 */
+		for ( var key in distinctParentNodes) {
+			var root = distinctParentNodes[key];
+		}
+	}
+
+	oldTreeRootNode = root;
+	treeLevel += 1;
+	if (!d3tree)
+		d3tree = new D3Tree2($("#graphDiv"));
+	d3tree.drawTree(root);
 }
+
+//}
 
 

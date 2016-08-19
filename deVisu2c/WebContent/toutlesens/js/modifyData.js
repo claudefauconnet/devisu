@@ -178,7 +178,7 @@ function drawFieldInputs(obj, type) {
 		}
 		str += "<tr>"
 		str += "<td>" + fieldName
-				+ " : </td><td><input class='inputFieldNode' value='"
+				+ " : </td><td><input class='inputFieldNode' value='" 
 				+ fieldValue + "' id='field_" + fieldName + "'>" + "<td>";
 		str += "</tr>"
 	}	

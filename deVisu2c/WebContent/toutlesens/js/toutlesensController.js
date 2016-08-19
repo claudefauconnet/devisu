@@ -831,13 +831,19 @@ function getGraphDataAroundNode(id, callbackFunction, noRelations) {
 
 
 	var mode = $("#outputModeHome:checked").val();
-	$("#bottomPanel").css("visibility", "visible");
+/*	$("#bottomPanel").css("visibility", "visible");*/
 	
 	if (mode != "CHRONOCHART"){
 	$("#chronoParams").css("visibility", "hidden");
 	$("#timeSlider").css("visibility", "hidden");
 	$("#chronoParams").css("height","0px");
 	}
+	
+	
+	selectLeftTab('#attrsTab');
+	
+
+	
 	
 	if (mode == "GRAPH2"){
 		getNodeAllRelations(id)
@@ -1486,6 +1492,13 @@ function drawSpreadsheet(neoResult) {
 
 }
 
+
+function selectLeftTab(tabId){
+
+	var index = $('#tabs-radarLeft a[href="'+tabId+'"]').parent().index();
+	$("#tabs-radarLeft").tabs("option", "active", index);
+
+}
 function setMessage(message, color) {
 	$("#message").html(message);
 	if (color)
