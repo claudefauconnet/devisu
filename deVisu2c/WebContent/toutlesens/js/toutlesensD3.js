@@ -113,7 +113,7 @@ function drawLegend() {
 			xx = -xx;
 			excludeLabels[selectedLegendNode.name] = xx;// *(excludeLabels[selectedLegendNode.name]);
 			var json = toFlareJson();
-			drawForceCollapse(json);
+			drawForceCollapse(json ,currentMode);
 			var opacity = 1;
 			if (xx > 0)
 				opacity = 0.3;

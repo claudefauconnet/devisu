@@ -1,0 +1,355 @@
+body{
+	   font-family: verdana, sans-serif;
+	    background-color: #f3edef;
+	     background-color: #eee;
+	      background-color: #eee;
+}
+body { overflow:auto;
+	font-size: 14px;
+	font-family: sans-serif, verdana;
+	vertical-align: top;
+ height: 1000px;
+}
+
+#tabs-radarLeft{
+	  font-size: 12px;
+	  font-weight: bold;
+	  width: 100%;
+	height: 100%;
+	  background-color: #eee;
+}
+}
+#main{
+	left: 5px;
+
+	
+}
+
+#center{
+	width: 100%;
+	height: 100%;
+		overflow: hidden;
+	
+}
+
+
+
+
+#left{
+	width: 300px;
+	height: 100%;
+	overflow: hidden;
+	
+}
+
+#radarFiltersDiv  {
+	width: 300px;
+	height: 100%;
+	
+}
+
+
+
+#attrsIframe {
+	width: 450px;
+	//height: 500px;
+	
+}
+
+#bcsTreeTab{
+   
+   
+    font-size: 10px;
+    font-weight: bold;
+  
+}
+#attrsTab {
+	padding:2px
+}
+
+#leftPanel{
+	overflow: hidden;
+}
+
+
+#radarTitle{
+	  font-size: 14px;
+    font-weight: bold;
+    color:#b18527;
+   
+   
+}
+#graphDiv {
+	visibility: visible;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+//	top:200px;
+//	position:absolute;
+	background-color: #eee;
+}
+#stateDisplay{
+	visibility: visible;
+	 font-size: 10px;
+	  font-weight: normal;
+	  font-style: italic;
+	  background-color:  #eee;
+	  width:100%;
+	  height: 10px;
+}
+
+
+body {db /data/transaction/commit overflow:auto;
+	font-size: 14px;
+	font-family: sans-serif, verdana;
+	vertical-align: top;
+}
+
+#tabs {
+	background-color: #ffc;
+}
+
+#topPanel {
+	width: 100%;
+	height: 100px;
+	background-color: #eee;
+	overflow: none;
+	java-script background-color: #eed;
+}
+
+#bottomPanel {
+	width: 100%;
+
+	height: 100%;
+	background-color: #fff;
+	overflow: none;
+	border-color: #eee;
+	border-style: solid;
+	border: thin;
+	visibility: hidden;
+}
+
+#spreadSheetDiv, #graphContainerDiv, #popupTextarea {
+	border: thin;
+	border-color: #eee;
+	border-style: solid;
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+}
+
+#spreadSheetDiv {
+	visibility: hidden;
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+	background-color: #ddd;
+}
+
+#graphContainerDiv {
+	background-color: #eee;
+	overflow: auto;
+	//width: 550px;
+	//height: 550px;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+}
+
+#popupTextarea {
+	left: 30vw;
+	width: 69vw;
+	visibility: hidden;
+	margin: 5px;
+}
+
+#tabs-query {
+	background-color: white;
+}
+
+#popup {
+	position: relative;
+	visibility: hidden;
+	width: 200px;
+	background-color: #ddd;
+	border-style: 20solid;
+	border-color: red;
+	border-width: 2px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #eed;
+}
+
+#bottomLeftPanel {
+	width: 250px;
+	background-color: #fff;
+	margin: 10px;
+	padding: 5px;
+	//height: 400px;
+	overflow: auto;
+}
+
+#infoPanel,#externalInfoPanel,#displayDiv{
+	background-color: #eee;
+	margin: 10px;
+	padding: 10px;
+//width:300px;
+border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	overflow: auto;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px; 
+	margin: 5px;
+}
+#externalInfoPanel{
+	max-height: 400px;
+	overflow: auto;
+}
+
+#imagePanel {
+	background-color: #eee;
+	padding: 10px;
+	height: 250px;
+	overflow: auto;
+	border-style: hidden;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+	text-align: center;
+}
+
+.title{
+	font-size: 18px;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+
+#outputModeHome {
+	 visibility: visible;
+}
+	
+#wordsSelect, #nodesLabelsSelect, #word {
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+	font-weight: bold;
+	font-size: 14px;
+	width: 150px;
+}
+#wordsSelect{
+		border-style: solid;
+	border-color: blue;
+	border-width: 1px; 
+}
+
+.breadcrumb {
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
+	background-color: #eed;
+	visibility: hidden;
+	font-weight: bold; //
+	width: 900px;
+}
+
+a:link, a:visited #infoPanel {
+	font-style: italic;
+	color: grey;
+	font-size: 12px;
+}
+
+a:link, a:visited .breadcrumb-item {
+	font-size: 12px;
+}
+
+a:link, a:visited .chronoSheet {
+	font-style: italic;
+	font-size: 12px;
+}
+
+#chronoParams {
+	background-color: #eed;
+	visibility: hidden;
+	height: 0px;
+}
+
+.chronoSheet {
+	border: medium;
+	border-color: #662211;
+	border-bottom-style: solid;
+	width: 520px;
+}
+
+#rangeSlider {
+	font-style: italic; 4
+	font-size: 12px;
+}
+
+#modifyControls, #inputPanel {
+	background-color: #bbd;
+	visibility: hidden;
+}
+
+#inputPanelXXX {
+	background-color: #aac;
+	margin: 10px;
+	padding: 10px;
+	overflow: auto;
+	visibility: hidden;
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 5px;
+	height: 2px;
+	height: auto;
+}
+
+#currentNodeSpan {
+	color: blue;
+}
+
+#graphLegendDiv{
+	
+	width: 400px;
+	//height: 600px;
+	
+}
+
+
+
+/*********************** force Collapse******************/
+circle.node {
+	cursor: pointer;
+	stroke: #000;
+	stroke-width: .5px;
+}
+
+line.link {
+	fill: none;
+	stroke: #9ecae1;
+	stroke-width: 1.5px;
+}
+
+.nodeText {
+	font-family: verdana, sans-serif;
+	font-size: 8px;
+	color: blue;
+}
+
+.link {
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 1px;
+}
+
+
+.inputFieldNode{
+	width: 400px;
+}
+

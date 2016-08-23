@@ -9,9 +9,18 @@ var hoverRect;
 var hoverText;
 var legendNodeLabels = {}
 var legendRelTypes = {};
+var navigationPath=[];
+
 
 
 function getNodeAllRelations(id,output,addToExistingTree,cacheNewResult) {
+	if(!isNumber(id))
+		id=parseInt(id);
+	if(addToExistingTree)
+	navigationPath.push(id);
+	else 
+		navigationPath=[id];
+	currentRootId=id;
 	 legendNodeLabels = {}
 	 legendRelTypes = {};
 	var subGraphWhere = ""
@@ -59,8 +68,10 @@ function getNodeAllRelations(id,output,addToExistingTree,cacheNewResult) {
 			}
 			var resultArray = data.results[0].data;
 			if(addToExistingTree && cachedResultArray ){
-				
+
 				resultArray=$.merge(resultArray,cachedResultArray);
+
+					
 				
 				
 			}
@@ -108,6 +119,8 @@ function showInfos2(id) {
 
 }
 
+
+
 function toFlareJson(resultArray,addToExistingTree) {
 	var rootId;
 	if (!resultArray) {
@@ -115,6 +128,12 @@ function toFlareJson(resultArray,addToExistingTree) {
 	} else {
 		
 	}
+	
+	
+	
+	
+	
+	
 	var nodesMap = {};
 
 	for (var i = 0; i < resultArray.length; i++) {
@@ -137,13 +156,14 @@ function toFlareJson(resultArray,addToExistingTree) {
 				id : ids[j],
 				children : []
 			}
-			if (j > 0 && excludeLabels[nodeNeo.type] > 0)
-				continue;
+		
+				
 			
 			if (j== 0) {	
 				nodeObj.parent = "root";
 				rootId=nodeObj.id;
 				nodesMap.root = nodeObj
+				
 
 			}
 
@@ -152,7 +172,17 @@ function toFlareJson(resultArray,addToExistingTree) {
 				
 				nodeObj.relType = rels[j - 1];
 				nodeObj.parent = ids[j - 1];
-				nodesMap[nodeObj.id] = nodeObj;
+				
+			/*	if (j > 0 && excludeLabels[nodeObj.type] > -1 &&  navigationPath.indexOf(nodeObj.id)){
+					continue;
+					
+				}*/
+					nodesMap[nodeObj.id] = nodeObj;
+			
+				
+				
+				if(navigationPath.indexOf(nodeObj.id)>-1)
+					nodeObj.navigationPathIndex=navigationPath.indexOf(nodeObj.id);
 			}
 			
 			
@@ -167,13 +197,16 @@ function toFlareJson(resultArray,addToExistingTree) {
 					type : nodeObj.type
 				}
 			}
+		
 		// console.log(JSON.stringify(nodeObj));
 		// console.log(","+i+","+j+","+nodeObj.name+","+nodeObj.id+","+
 		// nodeObj.parent);
 		}
 
 	}	
+	
 	deleteRecursiveReferences(nodesMap);
+	removeExcludedLabels(nodesMap);
 	var root = nodesMap.root;
 	root.isRoot = true;
 	addChildRecursive(root, nodesMap, 1);
@@ -183,13 +216,27 @@ function toFlareJson(resultArray,addToExistingTree) {
 	return root;
 }
 
+function removeExcludedLabels(map){
+	 var keysToExclude=[];
+		for(key in map){
+			var nodeObj=map[key];
+		if (nodeObj.parent!="root"  && excludeLabels[nodeObj.type] > -1 &&  navigationPath.indexOf(nodeObj.id)){
+			keysToExclude.push(key);
+			
+		}
+		for( var i=0;i<keysToExclude.length;i++){
+			delete map[keysToExclude[i]];
+			}
+		}
+	}
+
 // eliminer les references circulaires
 function deleteRecursiveReferences(nodesMap){
 	var idsToDelete=[];
 	for(var key in nodesMap){
 		var parent=nodesMap[key].parent;
 		if(nodesMap[parent])
-		console.log( nodesMap[parent].parent+"  "+nodesMap[key].id)
+	//	console.log( nodesMap[parent].parent+"  "+nodesMap[key].id)
 		
 		if(nodesMap[parent] && nodesMap[parent].parent==nodesMap[key].id){
 			// if(nodesMap[key].parent!=rootId)// on ne detruit pas les noeud

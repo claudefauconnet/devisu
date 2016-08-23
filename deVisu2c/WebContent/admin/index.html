@@ -2,37 +2,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>deVisu ETL</title>
 </head>
 
-<link rel="stylesheet" type="text/css" title="Design"
-	href="js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" title="Design" href="../common/js/jquery/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" title="Design" href="../common/js/jquery/jquery.splitter.css" />
 
-<link rel="stylesheet" type="text/css" title="Design"
-	href="js/jquery/jquery.splitter.css" />
 
-<link rel="stylesheet" href="js/jsTree/themes/default/style.min.css" />
+
 <link rel="stylesheet" type="text/css" href="css/index.css" />
+
 
 <script src="../common/js/jquery/jquery.min.js"></script>
 <script src="../common/js/jquery/jquery-ui.min.js"></script>
 <script src="../common/js/jquery/jquery.splitter.js"></script>
-<script src="../common/js/d3/d3.js"></script>
 <script src="../common/js/common.js"></script>
+<script src="../common/js/devisuProxy.js"></script>
 
-
-
-<script src="js/jsTree/jstree.min.js"></script>
-<script src="js/forceGraphClass.js"></script>
-<script src="js/dndTreeClassV2.js"></script>
-
-<script src="js/toutlesensController.js"></script>
-<script src="js/toutlesensData.js"></script>
-<script src="js/toutlesensD3.js"></script>
-
-<script src="js/chronology.js"></script>
-<script src="js/modifyData.js"></script>
-<script src="js/externalResources.js"></script>
+<script src="js/adminMongo.js"></script>
 
 <!--  
 
@@ -288,10 +275,13 @@
 		<!--  ****************************************************graph***************************-->
 
 		<div id="center">
-	<div id="graphLegendDiv"></div>
-			<div id="graphDiv"></div>
-			<div id="popup"></div>
-		</div>
+	DB <select id="dbSelect" onchange='$("#dbName").val($("#dbSelect").val());initCollections();'>
+					<option>&nbsp;</option>
+			</select> <input id="dbName">
+			
+			collection <select id="collSelect" onchange='$("#collectionName").val($("#collSelect").val());'>
+					<option>&nbsp;</option>
+					</select>
 
 	</div>
 

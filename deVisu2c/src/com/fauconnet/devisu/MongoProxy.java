@@ -80,7 +80,19 @@ public class MongoProxy {
 			 * title.charAt(i))); }
 			 */
 
-			MongoProxy proxy = new MongoProxy("localhost", 27017, "POT");
+			MongoProxy proxy = new MongoProxy("localhost", 27017, "POT2016");
+			
+		 List<String> objs=proxy.getDistinct("use_cases_tree", new BasicDBObject(), "type");
+		 for(String obj:objs){
+			 String str=obj.toString();
+			 System.out.println(str);;
+		 }
+	
+		 
+		 
+		 
+			proxy.listCollections();
+			
 			DBObject query=new BasicDBObject();
 			DBObject fields=new BasicDBObject("techno",1);
 			fields.put("year",1);
@@ -138,6 +150,7 @@ public class MongoProxy {
 	public String listCollections() {
 
 		Set<String> colls = db.getCollectionNames();
+
 		DBObject collections = new BasicDBList();
 		int i = 0;
 		StringBuffer sb = new StringBuffer();
@@ -224,9 +237,9 @@ public class MongoProxy {
 
 	}
 
-	public List<DBObject> getDistinct(String collectionName, DBObject query, String key) {
+	public List<String> getDistinct(String collectionName, DBObject query, String key) {
 		DBCollection coll = db.getCollection(collectionName);
-		List<DBObject> result = coll.distinct(key, query);
+		List<String> result = coll.distinct(key, query);
 		return result;
 	}
 

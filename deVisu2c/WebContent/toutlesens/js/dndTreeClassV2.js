@@ -494,9 +494,9 @@ function D3Tree2(_graphDiv, _nodesData) {
 					return this.defaultNodeColor;
 				return color;
 			}).style("stroke", function(d) {
-				var color = nodeColors[d.type];
-				if (color)
-					return color;
+				
+				if (d.navigationPathIndex)
+					return red;
 				return "steelblue";
 
 			});

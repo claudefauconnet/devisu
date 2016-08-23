@@ -602,7 +602,9 @@ public class MongoDataManager implements I_DataManager {
 		if (jsonQuery == null || jsonQuery.equals(""))
 			jsonQuery = "{}";
 		DBObject query = (DBObject) JSON.parse(jsonQuery);
-		return proxy.getDistinct(collectionName, query, key).toString();
+		List<String> objs= proxy.getDistinct(collectionName, query, key);
+		String str2=JSON.serialize(objs);
+		return str2;
 	}
 
 	/*

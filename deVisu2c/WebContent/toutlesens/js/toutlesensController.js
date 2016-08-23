@@ -19,7 +19,7 @@ var traversalToGraph = false;
 var traversalToSpredsheet = false;
 var d3tree;
 var spreadsheet;
-var currentLabel;
+
 /*
  * var timeSlider; var initEventTypes;
  */
@@ -38,6 +38,8 @@ currentQueryType=QUERY_TYPE_MATCH;
 var rIndices = 1;
 var currentObject;
 var currentObjId;
+var currentLabel;
+var currentMode;
 
 var nodeTypes = [];
 var popopuPosition = {
@@ -831,6 +833,7 @@ function getGraphDataAroundNode(id, callbackFunction, noRelations) {
 
 
 	var mode = $("#outputModeHome:checked").val();
+	currentMode=mode;
 /*	$("#bottomPanel").css("visibility", "visible");*/
 	
 	if (mode != "CHRONOCHART"){

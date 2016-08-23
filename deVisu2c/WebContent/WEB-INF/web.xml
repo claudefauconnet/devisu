@@ -34,7 +34,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DeVisuServlet</servlet-name>
-    <url-pattern>/pot/devisu</url-pattern>
+    <url-pattern>/devisu</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -44,7 +44,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>FileUploadServlet</servlet-name>
-    <url-pattern>/pot/radarUpload</url-pattern>
+    <url-pattern>/radarUpload</url-pattern>
   </servlet-mapping>
   
   
@@ -58,7 +58,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Neo4jServlet</servlet-name>
-    <url-pattern>/toutlesens/neoapi</url-pattern>
+    <url-pattern>/neoapi</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -68,6 +68,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RestServlet</servlet-name>
-    <url-pattern>/toutlesens/restapi</url-pattern>
+    <url-pattern>/restapi</url-pattern>
   </servlet-mapping>
 </web-app>

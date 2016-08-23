@@ -1,4 +1,4 @@
-var serverUrl = "devisu";
+var serverUrl = "../devisu";
 // ************** general CRUD*********************************************
 function proxy_callServer(action){
 	params = "action="+action;
@@ -351,10 +351,11 @@ function executeQuery(params, method, format, callback) {
 				
 				data = d;
 			},
-			error : function(error) {
-				console.error(error);
-				data=error.responseText;
-				setMessage("server error" + error(thrownError));
+			error : function(error ,ajaxOptions, thrownError){
+				
+				console.log(error);
+				console.log(thrownError);
+				setMessage("server error" + thrownError);
 			}
 
 		});
@@ -368,9 +369,8 @@ function executeQuery(params, method, format, callback) {
 			success : callback,
 			data : d,
 			error : function(xhr, ajaxOptions, thrownError) {
-				console.log(url);
-				console.error(xhr.status);
-				console.error(thrownError);
+				console.log(error);
+				console.log(thrownError);
 				setMessage("server error" + thrownError);
 			}
 
